@@ -1,0 +1,35 @@
+p{
+    background-color: skyblue;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    display: none;
+}
+
+.pattern{
+    width: 300px;
+    height: 0;
+    background-color: violet;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.change{
+    height: 300px;
+    opacity: 1;
+}
+
+.main-bg{
+    padding: 100px 20px;
+    background: lightgrey;
+}
+
+.black-bg{
+    display: none;
+}
+.block{
+    display: block;
+}
+.none{
+    display: none;
+}

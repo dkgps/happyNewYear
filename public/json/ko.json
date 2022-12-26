@@ -1,0 +1,16 @@
+{
+    "kr" : {
+        "app": {
+            "name": "INSPINIA 2.4"
+        },
+        "nav": {
+            "prjtManager": "프로젝트 관리",
+            "prjtList": "프로젝트 현황",
+            "prjtJoin": "프로젝트 생성"
+        },
+        "prjt":{
+            "prjtList": "프로젝트 현황", 
+            "prjtJoin": "프로젝트 생성"
+        }
+    }
+}

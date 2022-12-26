@@ -25,3 +25,5 @@ db.getConnection(() => {
 app.listen(3000, function(){
     console.log("server running");
 });
+
+app.use('/', express.static(__dirname+ '/public'));
