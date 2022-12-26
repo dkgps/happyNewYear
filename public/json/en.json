@@ -1,0 +1,62 @@
+{
+    "app":{
+        "name": "INSPINIA 2.4"
+    },
+    "nav":{
+        "prjtManager": "project Manager",
+        "prjtList": "project List",
+        "prjtJoin": "project Join"
+    },
+    "prjt":{
+        "prjtList": "project List",
+        "prjtJoin": "project Join"
+    }
+}
+
+ex)
+
+(kr)
+
+ppt1.text.a = TOPVISA
+ppt1.text.b = 365 day Korea Best
+ppt1.text.c = 대한민국 입국의 모든 것
+
+(en)
+
+ppt1.text.a = TOPVISA
+ppt1.text.b = 365 day Korea Best
+ppt1.text.c = Everything about Korea's
+
+(cn)
+
+ppt1.text.a = TOPVISA
+ppt1.text.b = 365 day Korea Best
+ppt1.text.c = 关于韩国入境的全部
+
+(th)
+
+ppt1.text.a = TOPVISA
+ppt1.text.b = 365 day Korea Best
+ppt1.text.c = ทุกสิ่งทุกอย่างที่เข้ามาในเกาหลี
+
+
+(kr)
+index.text1 = TOPVISA
+index.text2 =
+index.text3 =
+index.text4 =
+index.text5 =
+index.text6 =
+index.text7 =
+index.text8 =
+index.text9 =
+index.text10 =
+
+(en)
+index.text1 = TOPVISA
+
+(cn)
+index.text1 = TOPVISA
+
+(th)
+index.text1 = TOPVISA
