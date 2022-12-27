@@ -10,6 +10,6 @@ router.get("/:uid", userController.getUser)
 
 // 회원 등록
 router.post("/", userController.insertUser)
-router.delete("/", userController.deleteUser)
+router.delete("/:uid", userController.deleteUser)
 
 module.exports = router
