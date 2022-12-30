@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
 const userRoute = require("./routes/user.route")
 app.use("/user", userRoute);
 
+const messageRoute = require("./routes/message.route")
+app.use("/message", messageRoute);
+
+
 //==================================================================
 //  템플릿 엔진 설정
 //==================================================================
