@@ -66,4 +66,78 @@ button{font-family: 'Gaegu' !important;}
 .btnArea button.inTweeter img{width: 34px;}
 .btnArea button.inGoogle{background-color: #fff;margin-top: 10px;}
 .btnArea button.inGoogle img{width: 23px;}
+
+/*************** signUp.html ***************/
+.stepGage{max-width: 780px;width: 100%;margin: 0 auto;background-color: #FFDC83;}
+.stepGage .inGage{width: 50%;border-radius:0 4px 4px 0;background-color: #68503ea3;height: 11px;}
+.signGage.active .stepGage{}
+.signGage.active .stepGage .inGage{width: 100%;border-radius:0;}
+.signUpWrap{}
+.signUpWrap .title{font-size: 32px;margin-top: 50px;position: relative;}
+.signUpWrap .title::after{top: -31px;left: 178px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/icon2.png');width: 54px;height: 55px;}
+.signUpWrap .title span{font-weight: bold;color: #000;}
+.signUpWrap .inputForm{margin-top: 40px;}
+.signUpWrap .inputForm .inputWrap{margin-top: 40px;}
+.signUpWrap .inputForm .inputWrap:first-of-type{margin-top: 0px;}
+.signUpWrap .inputForm label{}
+.signUpWrap .inputForm label span{font-size: 20px;}
+.signUpWrap .inputForm label span>span{color:#68503ea4;}
+.signUpWrap .inputForm label input{width: 100%;border:0;height: 55px;background-color: #FFF6DE;border-radius: 4px;font-family: 'Gaegu' !important;padding: 0 10px;box-sizing: border-box;font-size: 14px;}
+.plusText{font-size: 12px;display: block;margin-top: 9px;}
+.signUpWrap .checkForm{margin-top: 3rem;}
+.chk_box { display: block; position: relative; padding-left: 25px; margin-bottom: 10px; cursor: pointer; font-size: 14px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+.signUpWrap2 .title::after{top: -16px;left: 141px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/icon3.png');width: 33px;height: 36px;}
+.signUpWrap2 .image{width: 270px;margin: 0 auto;margin-top: 50px;}
+.signUpWrap2 .image img{width: 270px;height: 270px;object-fit: cover;border-radius: 30px;border: 2px solid #68503e30;}
+.signUpWrap2 .infoBox{margin: 0 auto; margin-top: 30px; text-align: center;padding: 18px 0;background-color: #FFF3D5;border-radius: 4px;max-width: 320px;width: 100%;}
+.signUpWrap2 .scopeOfDis{ margin-top: 37px;}
+
+.signUpWrap2 .scopeOfDis h2{font-size: 16px;margin: 0 auto;margin-top: 35px; max-width: 320px;width: 100%;}
+.signUpWrap2 .scopeOfDis .btnArea{display: flex;align-items: center;justify-content: space-between;width: 100% !important;max-width: unset !important;margin-top: 24px;}
+.signUpWrap2 .scopeOfDis .btnArea button{width: calc(50% - 5px);border: 2px solid #674F3D;}
+.signUpWrap2 .submitBtn{margin-top: 40px;padding-bottom: 20px;}
+.signUpWrap2 .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
+.signUpWrap2 .submitBtn .next{width: calc(70% - 5px);}
+
+.signGage.active .signUpWrap1{display: none;}
+/* 기본 체크박스 숨기기 */
+.chk_box input[type="checkbox"] { display: none; }
+.signUpWrap .allArea{border-bottom: 1px solid #674F3D;}
+
+/* 선택되지 않은 체크박스 스타일 꾸미기 */
+.signUpWrap .on { width: 13px; height: 13px;border-radius: 4px; background: transparent; position: absolute; top: 0; left: 0; border: 1px solid #674F3D;}
+
+/* 선택된 체크박스 스타일 꾸미기 */
+.chk_box input[type="checkbox"]:checked + .on { background: transparent; }
+.signUpWrap .on:after { content: ""; position: absolute; display: none; }
+.chk_box input[type="checkbox"]:checked + .on:after { display: block; }
+.signUpWrap .on:after { width: 3px; height: 7px; border: solid #674F3D; border-width: 0 2px 2px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); position: absolute; left: 4px; top: 1px; }
+.submitBtn{    margin-top: 3rem;}
+.submitBtn button{width: 100%;height: 55px;font-size: 24px;background-color: #674F3D;color: #fff;border-radius: 4px;}
+
+/*************** indexSub.html ***************/
+.mainWrap{}
+.mainWrap .titleWrap{padding-top: 50px;}
+.mainWrap .titleWrap h2{font-size: 32px;font-weight: normal;}
+.mainWrap .titleWrap h2 span{color: #000;font-weight: bold;}
+.mainWrap .titleWrap h3{margin-top: 5px;font-size: 20px;font-weight: normal;}
+.mainWrap .mainImage{max-width: 330px; margin:0 auto;margin-top: 30px;width: 100%;position: relative;}
+.mainWrap .mainImage .messageContent{position: absolute;bottom: 0;width: 100%;}
+.mainWrap .mainImage .messageContent .i1{position: absolute;bottom: 65px;left: 10px;}
+.mainWrap .mainImage .messageContent .i2{position: absolute;bottom: 82px;left: 50px;}
+.mainWrap .mainImage .messageContent .i3{position: absolute;bottom: 29px;left: 43px;}
+.mainWrap .mainImage .messageContent .i4{position: absolute;bottom: 12px;right: 167px;}
+.mainWrap .mainImage .messageContent .i5{position: absolute;bottom: 17px;right: 109px;}
+.mainWrap .mainImage .messageContent .i6{position: absolute;right: 62px;bottom: 40px;}
+.mainWrap .mainImage img{width: 100%;}
+.mainWrap .pageNum{font-size: 22px;text-align: center;margin-top: 10px;}
+.mainWrap .pageNum a{font-size: 22px;}
+.mainWrap .linkCopy{padding-bottom: 20px;}
+.linkCopy .create{background-color: transparent;color: #674F3D;}
+@media(max-width: 450px){
+  /* .mainWrap .mainImage{max-width: 450px;width: calc(100% + 30px);margin:0 auto;margin-left: -15px;} */
+}
+
+
 /*# sourceMappingURL=index.css.map */

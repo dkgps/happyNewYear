@@ -19,6 +19,14 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/signUp", (req, res) => {
+    res.sendFile(__dirname + "/signUp.html");
+});
+
+app.get("/indexSub", (req, res) => {
+    res.sendFile(__dirname + "/indexSub.html");
+});
+
 //==================================================================
 //  Load the router module in the app
 //==================================================================
