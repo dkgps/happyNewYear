@@ -20,12 +20,13 @@
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
     <!-- <script src="js/jquery-2.2.4.min.js"></script> -->
     <!-- <script src="../js/validate.js"></script> -->
-    <script src="/static/js/swiper.min.js"></script>
+    <!-- <script src="/static/js/swiper.min.js"></script> -->
     <!-- <script src="js/frontEvent.js"></script> -->
-    <script src="/static/slick/slick.js"></script>
+    <!-- <script src="/static/slick/slick.js"></script> -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/1.9.0/i18next.min.js" type="text/javascript"></script>
     <script src="/static/js/textFile.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <style>
     /* body{background-color: red;} */
@@ -39,14 +40,15 @@
             </div>
         </div>
     </div> -->
-    <div class="wrap signGage active" style="position: relative;">
+    <div class="wrap signGage" style="position: relative;">
         <div class="headerWrap">
-            <div class="stepGage">
-                <div class="inGage"></div>
-            </div>
+            
         </div>
         
         <section class="marginCenter signUpWrap signUpWrap1">
+            <div class="stepGage">
+                <div class="inGage"></div>
+            </div>
             <div class="title">
                 <span>어떤 이름</span>으로
                 <br>새해상을 만드시겠어요?
@@ -88,12 +90,12 @@
                     </div>
 
                     <label for="over14" class="chk_box" style="margin-top: 10px;">
-                        <input type="checkbox" id="over14" />
+                        <input type="checkbox" id="over14" class="chk"/>
                         <span class="on"></span>
                         (필수) 만 14세 이상이에요
                     </label>
                     <label for="agree" class="chk_box">
-                        <input type="checkbox" id="agree" />
+                        <input type="checkbox" id="agree" class="chk"/>
                         <span class="on"></span>
                         (필수) 이용약관 및 개인정보수집이용 동의
                     </label>
@@ -104,6 +106,9 @@
             </div>
         </section>
         <section class="marginCenter signUpWrap signUpWrap2">
+            <div class="stepGage active">
+                <div class="inGage"></div>
+            </div>
             <div class="title">
                 마지막으로<br>
                 <span>설정</span>을 확인해주세요
@@ -134,6 +139,98 @@
     <!-- 모바일 네비게이션 -->
     </div>
     <script>
+        $(function()
+            {
+                // 전체동의
+                $(".checkForm").on("click", "#allAgree", function () 
+                    {
+                        $(this).parents(".checkForm").find('input').prop("checked", $(this).is(":checked"));
+                    }
+                );
+
+                // 체크박스 개별 선택
+                $(".checkForm").on("click", ".chk", function() 
+                    {
+                        var is_checked = true;
+
+                        $(".checkForm .chk").each(function()
+                            {
+                                is_checked = is_checked && $(this).is(":checked");
+                            }
+                        );
+
+                        $("#allAgree").prop("checked", is_checked);
+                    }
+                );
+
+                // 정보 작성 후 다음 페이지 넘기기
+                $(".accountCreate button").on("click",nextEvent)
+
+                function nextEvent()
+                {
+                    
+                    var name = $("#name").val();
+                    var email = $("#email").val();
+                    var allAgree = $("#allAgree:checked").val();
+                    var over14 = $("#over14:checked").val();
+                    var agree = $("#agree:checked").val();
+                    function email_check(email) 
+                    {
+                        var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+                        return reg.test(email);
+                    }
+
+                    if( name == "" )
+                    {
+                        alert("이름을 입력해주세요");
+                        return;
+                    }
+
+                    if( email == "" )
+                    {
+                        alert("이메일을 입력해주세요");
+                        return;
+                    }
+                    else
+                    {
+                        if(!email_check(email))
+                        {
+                            alert("이메일 형식에 맞게 입력해주세요");
+                            return false;
+                        }
+                    }
+
+                    // allAgree = $.trim( allAgree );
+                    // if( allAgree == "" )
+                    // {
+                    //     alert("전체 선택에 동의해주세요");
+                    //     return; 
+                    // }    
+                    over14 = $.trim( over14 );
+                    if( over14 == "" )
+                    {
+                        alert("14세 이상 이용약관에 동의해주세요");
+                        return; 
+                    }  
+                    agree = $.trim( agree );
+                    if( agree == "" )
+                    {
+                        alert("개인정보 이용약관에 동의해주세요");
+                        return; 
+                    }  
+                    
+                    $(".signGage").addClass("active")
+                }
+
+                // 이전 페이지 돌아오기
+                $(".completeArea button.prev").on("click",prevEvent)
+                
+                function prevEvent()
+                {
+                    $(".signGage").removeClass("active")
+                }
+            }
+        )
     </script>
 </body>
 </html>
