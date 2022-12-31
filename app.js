@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 //==================================================================
 //  Serving static files
 //==================================================================
-app.use('/', express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 // 페이지 로딩 함수
 app.get("/", (req, res) => {
