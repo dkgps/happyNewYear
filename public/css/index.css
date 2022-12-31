@@ -57,8 +57,8 @@ button{font-family: 'Gaegu' !important;}
 .mainBox p{font-size: 16px;margin-top: 10px;text-align: center;}
 .mainBox .image{width: 201px;margin: 0 auto; margin-top: 15px;}
 .mainBox .image img{width: 100%;}
-.btnArea{max-width: 320px;width: 100%;margin: 0 auto;margin-top: 70px;}
-.btnArea button{width: 320px;height: 55px;font-size: 20px;border-radius: 4px;}
+.btnArea{max-width: 320px;width: 100%;margin: 0 auto;margin-top: 70px;display: flex;}
+.btnArea .checks input[type="radio"] + label{display: block; width: 320px;height: 55px;font-size: 20px;border-radius: 4px;border: 1px solid #000;}
 .btnArea button.inKakao{}
 .btnArea button.inKakao{background-color: #F9E000;}
 .btnArea button.inKakao img{width: 28px;}

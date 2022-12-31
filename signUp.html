@@ -127,8 +127,20 @@
                     <br>다른 사람들에세 공개할까요?
                 </h2>
                 <div class="btnArea">
-                    <button>전체 공개</button>
-                    <button>나만 보기</button>
+                    <!-- <button>전체 공개</button>
+                    <button>나만 보기</button> -->
+                    <div class="checks">
+                        <input type="radio" id="all" name="scopeLine"> 
+                        <label for="all">
+                            전체 공개
+                        </label> 
+                    </div>
+                    <div class="checks">
+                        <input type="radio" id="onlyMe" name="scopeLine"> 
+                        <label for="onlyMe">
+                            나만 보기
+                        </label> 
+                    </div>
                 </div>
             </div>
             <div class="submitBtn completeArea">
@@ -168,7 +180,6 @@
 
                 function nextEvent()
                 {
-                    
                     var name = $("#name").val();
                     var email = $("#email").val();
                     var allAgree = $("#allAgree:checked").val();
