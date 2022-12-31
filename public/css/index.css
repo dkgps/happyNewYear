@@ -70,8 +70,8 @@ button{font-family: 'Gaegu' !important;}
 /*************** signUp.html ***************/
 .stepGage{max-width: 780px;width: 100%;margin: 0 auto;background-color: #FFDC83;}
 .stepGage .inGage{width: 50%;border-radius:0 4px 4px 0;background-color: #68503ea3;height: 11px;}
-.signGage.active .stepGage{}
-.signGage.active .stepGage .inGage{width: 100%;border-radius:0;}
+.signGage .stepGage.active{}
+.signGage .stepGage.active .inGage{width: 100%;border-radius:0;}
 .signUpWrap{}
 .signUpWrap .title{font-size: 32px;margin-top: 50px;position: relative;}
 .signUpWrap .title::after{top: -31px;left: 178px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/icon2.png');width: 54px;height: 55px;}
@@ -100,7 +100,10 @@ button{font-family: 'Gaegu' !important;}
 .signUpWrap2 .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
 .signUpWrap2 .submitBtn .next{width: calc(70% - 5px);}
 
+.signGage .signUpWrap1{}
+.signGage .signUpWrap2{display: none;}
 .signGage.active .signUpWrap1{display: none;}
+.signGage.active .signUpWrap2{display: block;}
 /* 기본 체크박스 숨기기 */
 .chk_box input[type="checkbox"] { display: none; }
 .signUpWrap .allArea{border-bottom: 1px solid #674F3D;}
@@ -113,7 +116,7 @@ button{font-family: 'Gaegu' !important;}
 .signUpWrap .on:after { content: ""; position: absolute; display: none; }
 .chk_box input[type="checkbox"]:checked + .on:after { display: block; }
 .signUpWrap .on:after { width: 3px; height: 7px; border: solid #674F3D; border-width: 0 2px 2px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); position: absolute; left: 4px; top: 1px; }
-.submitBtn{    margin-top: 3rem;}
+.submitBtn{margin-top: 3rem;}
 .submitBtn button{width: 100%;height: 55px;font-size: 24px;background-color: #674F3D;color: #fff;border-radius: 4px;}
 
 /*************** indexSub.html ***************/
@@ -135,6 +138,28 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .pageNum a{font-size: 22px;}
 .mainWrap .linkCopy{padding-bottom: 20px;}
 .linkCopy .create{background-color: transparent;color: #674F3D;}
+
+/* mainWrap */
+.foodChoice{display: flex;gap: 13px;flex-wrap: wrap;width:100%;max-width: 308px;margin: 0 auto;margin-top: 45px;}
+.foodChoice .checks input[type="radio"] + label .image{width: 93px;height: 93px;background-color: #fffcf5c1;border-radius: 4px;position: relative;}
+.foodChoice .checks input[type="radio"] + label .image img{width: 100%;width: 100%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+.foodChoice .checks input[type="radio"]:checked + label .image{border: 2px solid #674F3D;}
+.foodChoice .checks input[type="radio"]:checked + label .image img{width: 100%;}
+.mainWrap .submitBtn{margin-top: 15rem;}
+.mainWrap .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
+.mainWrap .submitBtn .next{width: calc(70% - 5px);}
+.mainWrap .writeStep{}
+.mainWrap .writeStep .writeForm{position: relative;background-color: #fffade71;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
+.mainWrap .writeStep .writeForm .choiced{position: absolute;right: 10px;top: -29px;}
+.mainWrap .writeStep .writeForm img{display: none;width: 63px;}
+.mainWrap .writeStep .writeForm img.active{display: block;}
+.mainWrap .writeStep h3{font-size: 22px;}
+.mainWrap .writeStep #nickName{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #674f3d36;}
+.mainWrap .writeStep #nickName::placeholder{font-family: 'Gaegu';color: #674f3d6e;font-size: 24px;}
+.mainWrap .writeStep #writeContent{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
+.mainWrap .writeStep #writeContent::placeholder{color: #674f3d6e;}
+.writeStep .publicWrap{margin-top:20px;}
+.mainWrap .submitBtn.line{margin-top:1rem;padding: 20px 0;border-top: 1px solid #674f3d25;}
 @media(max-width: 450px){
   /* .mainWrap .mainImage{max-width: 450px;width: calc(100% + 30px);margin:0 auto;margin-left: -15px;} */
 }
