@@ -29,9 +29,8 @@ const getUser = async (req, res, next) => {
 const insertUser = async (req, res, next) => {
 	try
 	{
-		console.log(req.body);
-		// const savedUser = await UserService.insertUser();
-		// res.send(savedUser);
+		const savedUser = await UserService.insertUser(req.body);
+		res.send(savedUser);
 	}
 	catch (err)
 	{
@@ -39,8 +38,17 @@ const insertUser = async (req, res, next) => {
 	}
 }
 
-const deleteUser = (req, res, next) => {
-	res.json({ "message" : "DELETE user to the test homepage" })
+const deleteUser = async (req, res, next) => {
+	try
+	{
+		let uid = req.params.uid;
+		await UserService.deleteUser({uid});
+		res.send({ status : 200, message : "정상적으로 삭제되었습니다." });
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
 }
 
 

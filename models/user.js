@@ -34,11 +34,19 @@ module.exports = function(sequelize, DataTypes) {
     disclosureStatus: {
       type: DataTypes.CHAR(1),
       allowNull: false
+    },
+    createdAt: {
+      allowNull : false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull : false,
+      type: Sequelize.DATE,
     }
   }, {
     sequelize,
     tableName: 'user',
-    timestamps: false,
+    timestamps: true,
     indexes: [
       {
         name: "PRIMARY",

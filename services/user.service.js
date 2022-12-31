@@ -1,5 +1,6 @@
 const { user } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
 
+// 전체 회원 리스트
 const getAllUsers = async (req, res, next) => {
 	try
 	{
@@ -13,14 +14,15 @@ const getAllUsers = async (req, res, next) => {
 	}
 }
 
+// 특정 회원 정보 가져오기 (find by uid)
 const getUser = async (req, res, next) => {
 	try
 	{
         let uid = req.uid;
-		const savedUser = await user.findOne({
+		const specificUser = await user.findOne({
 			where: { uid }
 		});
-		return savedUser;
+		return specificUser;
 	}
 	catch (err)
 	{
@@ -29,10 +31,12 @@ const getUser = async (req, res, next) => {
 	}
 }
 
-const insertUser = async (req, res, next) => {
+// 회원 가입
+const insertUser = async (userDto, res, next) => {
 	try
 	{
-        console.log("Req: ",req);
+        const savedUser = await user.create(userDto);
+		return savedUser;
 	}
 	catch (err)
 	{
@@ -40,8 +44,22 @@ const insertUser = async (req, res, next) => {
 		throw Error(`ERROR WHILE INSERT USER - ${err}`);
 	}
 }
-const deleteUser = (req, res, next) => {
-	return({ "message" : "DELETE user to the test homepage" })
+
+// 회원 삭제
+const deleteUser = async (req, res, next) => {
+	try
+	{
+        let { uid } = req;
+        const savedUser = await user.destroy({
+            where : { uid : uid }
+        });
+		return savedUser;
+	}
+	catch (err)
+	{
+		console.error(err);
+		throw Error(`ERROR WHILE DELETE USER - ${err}`);
+	}
 }
 
 module.exports = {

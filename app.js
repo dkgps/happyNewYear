@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 //==================================================================
 //  Serving static files
 //==================================================================
-app.use('/', express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 // 페이지 로딩 함수
 app.get("/", (req, res) => {
@@ -32,6 +32,10 @@ app.get("/indexSub", (req, res) => {
 //==================================================================
 const userRoute = require("./routes/user.route")
 app.use("/user", userRoute);
+
+const messageRoute = require("./routes/message.route")
+app.use("/message", messageRoute);
+
 
 //==================================================================
 //  템플릿 엔진 설정
