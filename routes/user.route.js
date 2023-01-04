@@ -2,6 +2,9 @@ const express = require("express")
 const router = express.Router()
 const userController = require("../controllers/user.controller")
 
+// 카카오 로그인 / 회원가입
+router.post("/kakaoLogin", userController.kakaoLogin);
+
 // 전체 회원 리스트 가져오기
 router.get("/", userController.getAllUsers)
 

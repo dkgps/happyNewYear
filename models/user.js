@@ -9,15 +9,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     userEmail: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     password: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     nickname: {
       type: DataTypes.STRING(45),
-      allowNull: false
+      allowNull: true
     },
     email: {
       type: DataTypes.STRING(255),
@@ -25,15 +25,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     social: {
       type: DataTypes.STRING(45),
-      allowNull: true
+      allowNull: false
     },
     socialKey: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     disclosureStatus: {
       type: DataTypes.CHAR(1),
-      allowNull: false
+      allowNull: true
     },
     createdAt: {
       allowNull : false,

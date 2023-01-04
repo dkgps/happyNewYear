@@ -1,6 +1,18 @@
 const User = require('../models/user');
 const UserService = require('../services/user.service'); // UserService 사용
 
+const kakaoLogin = async(req,res,next) => {
+	try
+	{
+		const kakaoLogin = await UserService.kakaoLogin(req.body);
+		res.send({ status: 200, signUp : kakaoLogin.signUp });
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
 const getAllUsers = async(req, res, next) => {
 	try
 	{
@@ -53,6 +65,7 @@ const deleteUser = async (req, res, next) => {
 
 
 module.exports = {
+	kakaoLogin,
 	getAllUsers,
 	getUser,
 	insertUser,
