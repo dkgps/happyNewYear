@@ -188,110 +188,40 @@
     <!-- 모바일 네비게이션 -->
     </div>
     <script>
-        $(function()
-            {
-                // 전체동의
-                $(".checkForm").on("click", "#allAgree", function () 
-                    {
-                        $(this).parents(".checkForm").find('input').prop("checked", $(this).is(":checked"));
-                    }
-                );
-
-                // 체크박스 개별 선택
-                $(".checkForm").on("click", ".chk", function() 
-                    {
-                        var is_checked = true;
-
-                        $(".checkForm .chk").each(function()
-                            {
-                                is_checked = is_checked && $(this).is(":checked");
-                            }
-                        );
-
-                        $("#allAgree").prop("checked", is_checked);
-                    }
-                );
-
-                // 정보 작성 후 다음 페이지 넘기기
-                $(".accountCreate button").on("click",nextEvent)
-
-                function nextEvent()
-                {
-                    var name = $("#name").val();
-                    var email = $("#email").val();
-                    var allAgree = $("#allAgree:checked").val();
-                    var over14 = $("#over14:checked").val();
-                    var agree = $("#agree:checked").val();
-                    function email_check(email) 
-                    {
-                        var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-                        return reg.test(email);
-                    }
-
-                    if( name == "" )
-                    {
-                        alert("이름을 입력해주세요");
-                        return;
-                    }
-
-                    if( email == "" )
-                    {
-                        alert("이메일을 입력해주세요");
-                        return;
-                    }
-                    else
-                    {
-                        if(!email_check(email))
-                        {
-                            alert("이메일 형식에 맞게 입력해주세요");
-                            return false;
-                        }
-                    }
-
-                    // allAgree = $.trim( allAgree );
-                    // if( allAgree == "" )
-                    // {
-                    //     alert("전체 선택에 동의해주세요");
-                    //     return; 
-                    // }    
-                    over14 = $.trim( over14 );
-                    if( over14 == "" )
-                    {
-                        alert("14세 이상 이용약관에 동의해주세요");
-                        return; 
-                    }  
-                    agree = $.trim( agree );
-                    if( agree == "" )
-                    {
-                        alert("개인정보 이용약관에 동의해주세요");
-                        return; 
-                    }  
-                    
-                    $(".signGage").addClass("active")
-                }
-
-                // 이전 페이지 돌아오기
-                $(".completeArea button.prev").on("click",prevEvent)
-                
-                function prevEvent()
-                {
-                    $(".signGage").removeClass("active")
-                }
-            }
-        )
-
-        // 카카오 로그인
-        function loginWithKakao() {
-            Kakao.Auth.authorize({
-            // redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
-            redirectUri: 'http://localhost:3000/kakaoCallback',
-            });
-        }
-
-        displayToken()
-        function displayToken() 
+        getAccessToken() 
+        function getAccessToken() 
         {
-            var token = getCookie('authorize-access-token');
+            // url 가져오기-
+            const URLSearch = new URLSearchParams(location.search);
+            // 그 중에서도 code 쿼리스트링 가져오기
+            const code = URLSearch.get("code")
+            
+                $.ajax({
+                    type: "POST",
+                    url: "https://kauth.kakao.com/oauth/token",
+                    header: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    },
+                    dataType : "text",
+                    cache: false,
+                    data: {
+                    grant_type: "authorization_code",
+                    client_id: "1c3352c94469a82a90b88fe62f776596",
+                    redirect_uri: "http://localhost:3000/kakaoCallback",
+                    // 위에서 가져온 url code 가져오기
+                    code: code
+                    },
+                    success: function ( data, textStatus ) 
+                    {
+                        var jsonObj = JSON.parse(data);
+                        const token = jsonObj.access_token;
+                        alert(token)
+                    },
+                    error : function (request, status, error) {
+                        alert("code:" + request.status + "\r\n" + "message:" + request.responseText + "\r\n"+"error:"+error);
+                    }
+                });
+            
 
             if(token) {
             Kakao.Auth.setAccessToken(token);
@@ -310,12 +240,6 @@
                 Kakao.Auth.setAccessToken(null);
                 });
             }
-        }
-
-        function getCookie(name) 
-        {
-            var parts = document.cookie.split(name + '=');
-            if (parts.length === 2) { return parts[1].split(';')[0]; }
         }
     </script>
 </body>
