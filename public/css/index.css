@@ -65,8 +65,8 @@ button{font-family: 'Gaegu' !important;}
 .btnArea a.inKakao{}
 .btnArea a.inKakao{background-color: #F9E000;}
 .btnArea a.inKakao img{width: 28px;}
-.btnArea a.inTweeter{background-color: #1DA1F2;margin-top: 10px;color: #fff;}
-.btnArea a.inTweeter img{width: 34px;}
+.btnArea a.inTweeter{background-color: #3b5998;margin-top: 10px;color: #fff;}
+.btnArea a.inTweeter img{    width: 24px;margin-right: 5px;}
 .btnArea a.inGoogle{background-color: #fff;margin-top: 10px;}
 .btnArea a.inGoogle img{width: 23px;}
 
