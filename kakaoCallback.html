@@ -223,23 +223,23 @@
                 });
             
 
-            if(token) {
-            Kakao.Auth.setAccessToken(token);
-            Kakao.Auth.getStatusInfo()
-                .then(function(res) {
-                if (res.status === 'connected') {
+            // if(token) {
+            // Kakao.Auth.setAccessToken(token);
+            // Kakao.Auth.getStatusInfo()
+            //     .then(function(res) {
+            //     if (res.status === 'connected') {
 
-                    // console.log("카카오 로그인 성공")
-                    document.getElementById('token-result').innerText
-                    = 'login success, token: ' + Kakao.Auth.getAccessToken();
+            //         // console.log("카카오 로그인 성공")
+            //         document.getElementById('token-result').innerText
+            //         = 'login success, token: ' + Kakao.Auth.getAccessToken();
 
 
-                }
-                })
-                .catch(function(err) {
-                Kakao.Auth.setAccessToken(null);
-                });
-            }
+            //     }
+            //     })
+            //     .catch(function(err) {
+            //     Kakao.Auth.setAccessToken(null);
+            //     });
+            // }
         }
     </script>
 </body>
