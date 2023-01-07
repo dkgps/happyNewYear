@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     disclosureStatus: {
-      type: DataTypes.CHAR(1),
+      type: DataTypes.BOOLEAN,
       allowNull: true
     },
     createdAt: {
