@@ -14,6 +14,9 @@ router.get("/:uid", userController.getUser)
 // 회원 등록
 router.post("/", userController.insertUser)
 
+// 회원 수정
+router.put("/", userController.updateUser);
+
 // 회원 삭제
 router.delete("/:uid", userController.deleteUser)
 
