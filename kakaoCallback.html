@@ -215,13 +215,46 @@
                     {
                         var jsonObj = JSON.parse(data);
                         const token = jsonObj.access_token;
-                        alert(token)
+                        // alert(token)
+                        // const accessToken = {"변수1":"변수값1"}
+                        // alert(token)
+                        // console.log("카카오 액세스 토큰 받아오기: ", response);
+                        kakaoLogin(token)
                     },
                     error : function (request, status, error) {
                         alert("code:" + request.status + "\r\n" + "message:" + request.responseText + "\r\n"+"error:"+error);
                     }
                 });
             
+                function kakaoLogin(token)
+                {
+                    $.ajax({
+                            type: "POST",
+                            url : "/user/kakaoLogin",
+                            data:{ accessToken : token },
+                            dataType: 'json',
+                            success: function ( response ) 
+                            {
+                                // alert(token)
+                                // const accessToken = {"변수1":"변수값1"}
+                                // alert(response)
+                                console.log("카카오 로그인: ", response);
+                                if(response.signUp === true)
+                                {
+                                    window.location.href='http://localhost:3000/signUp'
+                                }
+                                else if(response.signUp === false)
+                                {
+                                    window.location.href='http://localhost:3000/indexSub'
+                                }
+                            },
+                            error:function(){  
+                                //에러가 났을 경우 실행시킬 코드
+                                // alert("실패")
+                                console.log("카카오 로그인: error");
+                            }
+                        })
+                }
 
             // if(token) {
             // Kakao.Auth.setAccessToken(token);
