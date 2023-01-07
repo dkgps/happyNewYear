@@ -50,6 +50,18 @@ const insertUser = async (req, res, next) => {
 	}
 }
 
+const updateUser = async (req, res, next) => {
+	try
+	{
+		const result = await UserService.updateUser(req.body);
+		res.send(result.toString());
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
 const deleteUser = async (req, res, next) => {
 	try
 	{
@@ -69,5 +81,6 @@ module.exports = {
 	getAllUsers,
 	getUser,
 	insertUser,
+	updateUser,
 	deleteUser
 }

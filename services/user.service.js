@@ -29,12 +29,12 @@ const kakaoLogin = async (req, res, next) => {
 		// 회원이 있으면 로그인
 		if(kakaoUser)
 		{
-			return { signUp : false }
+			return { signUp : false, uid : kakaoUser.uid }
 		}
 		// 없으면 회원 가입
 		{
-			await user.create(userDto);
-			return { signUp : true }
+			const newUser = await user.create(userDto);
+			return { signUp : true, uid : newUser.uid }
 		}
 		
 	}
@@ -91,6 +91,20 @@ const insertUser = async (userDto, res, next) => {
 	}
 }
 
+// 회원 수정
+const updateUser = async (userDto, res, next) => {
+	try
+	{
+        await user.update(userDto, {where: { uid: userDto.uid } });
+		return 1;
+	}
+	catch (err)
+	{
+		console.error(err);
+		throw Error(`ERROR WHILE UPDATE USER - ${err}`);
+	}
+}
+
 // 회원 삭제
 const deleteUser = async (req, res, next) => {
 	try
@@ -113,5 +127,6 @@ module.exports = {
     getAllUsers,
     getUser,
     insertUser,
+	updateUser,
     deleteUser
 }
