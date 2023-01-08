@@ -241,11 +241,11 @@
                                 console.log("카카오 로그인: ", response);
                                 if(response.signUp === true)
                                 {
-                                    window.location.href='http://localhost:3000/signUp'
+                                    window.location.href='http://localhost:3000/signUp?uid='+response.uid
                                 }
                                 else if(response.signUp === false)
                                 {
-                                    window.location.href='http://localhost:3000/indexSub'
+                                    window.location.href='http://localhost:3000/indexSub?uid='+response.uid
                                 }
                             },
                             error:function(){  
