@@ -35,6 +35,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: true
     },
+    deleteYn: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
     createdAt: {
       allowNull : false,
       type: Sequelize.DATE,

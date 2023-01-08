@@ -54,7 +54,7 @@ const updateUser = async (req, res, next) => {
 	try
 	{
 		const result = await UserService.updateUser(req.body);
-		res.send(result.toString());
+		res.send({ status : 200, result : result.toString() });
 	}
 	catch (err)
 	{
@@ -66,8 +66,8 @@ const deleteUser = async (req, res, next) => {
 	try
 	{
 		let uid = req.params.uid;
-		await UserService.deleteUser({uid});
-		res.send({ status : 200, message : "정상적으로 삭제되었습니다." });
+		const result = await UserService.deleteUser({uid});
+		res.send({ status : 200, result : result.toString(), message : "회원 탈퇴가 완료되었습니다." });
 	}
 	catch (err)
 	{

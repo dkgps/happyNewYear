@@ -26,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
     message: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    deleteYn: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   }, {
     sequelize,

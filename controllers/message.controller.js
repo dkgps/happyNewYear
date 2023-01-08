@@ -3,7 +3,7 @@ const MessageService = require('../services/message.service'); // UserService �
 const getAllMessages = async(req, res, next) => {
 	try
 	{
-		let messageDto = req.params;
+		let messageDto = req.query;
 		const messageList = await MessageService.getAllMessages(messageDto);
 		res.send(messageList);
 	}
@@ -16,7 +16,7 @@ const getAllMessages = async(req, res, next) => {
 const getMessage = async (req, res, next) => {
 	try
 	{
-		const messageId = req.query.messageId;
+		const messageId = req.params.messageId;
 		const savedMessage = await MessageService.getMessage({messageId});
 		res.send(savedMessage);
 	}
@@ -38,12 +38,24 @@ const insertMessage = async (req, res, next) => {
 	}
 }
 
+const updateMessage = async (req, res, next) => {
+	try
+	{
+		const result = await MessageService.updateMessage(req.body);
+		res.send({ status : 200, result : result.toString() });
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
 const deleteMessage = async (req, res, next) => {
 	try
 	{
 		let messageId = req.params.messageId;
-		await MessageService.deleteMessage({messageId});
-		res.send({ status : 200, message : "정상적으로 삭제되었습니다." });
+		const result = await MessageService.deleteMessage({messageId});
+		res.send({ status : 200, result : result.toString(), message : "정상적으로 삭제되었습니다." });
 	}
 	catch (err)
 	{
@@ -56,5 +68,6 @@ module.exports = {
 	getAllMessages,
 	getMessage,
 	insertMessage,
+	updateMessage,
 	deleteMessage
 }
