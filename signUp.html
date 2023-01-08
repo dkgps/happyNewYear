@@ -105,7 +105,7 @@
                 <button>계정 만들기</button>
             </div>
         </section>
-        <section class="marginCenter signUpWrap signUpWrap2">
+        <section class="marginCenter signUpWrap signUpWrap2" style="display: block;">
             <div class="stepGage active">
                 <div class="inGage"></div>
             </div>
@@ -126,26 +126,28 @@
                     받은 연하장 내용을
                     <br>다른 사람들에세 공개할까요?
                 </h2>
-                <div class="btnArea">
+                <div class="btnArea publicScope">
                     <!-- <button>전체 공개</button>
                     <button>나만 보기</button> -->
-                    <div class="checks">
-                        <input type="radio" id="all" name="scopeLine"> 
-                        <label for="all">
+                    <span class="checks">
+                        <input type="radio" id="true" name="scopeLine" value="true"> 
+                        <label for="true">
                             전체 공개
                         </label> 
-                    </div>
-                    <div class="checks">
-                        <input type="radio" id="onlyMe" name="scopeLine"> 
-                        <label for="onlyMe">
+
+                        
+                    </span>
+                    <span class="checks">
+                        <input type="radio" id="false" name="scopeLine" value="false">
+                        <label for="false">
                             나만 보기
                         </label> 
-                    </div>
+                    </span>
                 </div>
             </div>
             <div class="submitBtn completeArea">
                 <button class="prev">이전</button>
-                <button class="next">완료</button>
+                <button id="subjectInformation" class="next">완료</button>
             </div>
         </section>
     <!-- 모바일 네비게이션 -->
@@ -153,6 +155,44 @@
     <script>
         $(function()
             {
+                const URLSearch = new URLSearchParams(location.search);
+                var uidData = URLSearch.get("uid")
+                var name = $("#name").val();
+                var emailData = $("#email").val();
+                var allAgree = $("#allAgree:checked").val();
+                var publicScope = $(".publicScope .checks input[name='scopeLine']:checked").val();
+                function email_check(emailData) 
+                {
+                    var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+                    return reg.test(emailData);
+                }
+                
+                // uid,닉네임,이메일,공개범위 정보 전송
+                $("#subjectInformation").on("click",function()
+                    {
+                        var jsonData = {
+                            uid:uidData, 
+                            nickname:name, 
+                            email:emailData, 
+                            disclosureStatus:publicScope,
+                        }
+
+                        $.ajax({
+                            url : "/user",
+                            type : "put",
+                            data : jsonData,
+                            dataType : 'json',
+                            success : function(){
+                                alert("성공");
+                            },
+                            error : function(){
+                                alert("서버요청실패");
+                            }
+                        })
+                    }
+                )
+
+
                 // 전체동의
                 $(".checkForm").on("click", "#allAgree", function () 
                     {
@@ -178,18 +218,10 @@
                 // 정보 작성 후 다음 페이지 넘기기
                 $(".accountCreate button").on("click",nextEvent)
 
-                function nextEvent()
+                function nextEvent(name,emailData)
                 {
-                    var name = $("#name").val();
-                    var email = $("#email").val();
-                    var allAgree = $("#allAgree:checked").val();
                     var over14 = $("#over14:checked").val();
                     var agree = $("#agree:checked").val();
-                    function email_check(email) 
-                    {
-                        var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-                        return reg.test(email);
-                    }
 
                     if( name == "" )
                     {
@@ -197,19 +229,11 @@
                         return;
                     }
 
-                    if( email == "" )
-                    {
-                        alert("이메일을 입력해주세요");
-                        return;
-                    }
-                    else
-                    {
-                        if(!email_check(email))
-                        {
-                            alert("이메일 형식에 맞게 입력해주세요");
-                            return false;
-                        }
-                    }
+                    // if(!email_check(email))
+                    // {
+                    //     alert("이메일 형식에 맞게 입력해주세요");
+                    //     return false;
+                    // }
 
                     // allAgree = $.trim( allAgree );
                     // if( allAgree == "" )
@@ -242,6 +266,19 @@
                 }
             }
         )
+
+        // $.ajax({
+        //     url : "/user",
+        //     type : "put",
+        //     data : {nickname: name,email:email},
+        //     dataType : 'json',
+        //     success : function(result){
+        //         console(result)
+        //     },
+        //     error : function(){
+        //         alert("서버요청실패");
+        //     }
+        // })
     </script>
 </body>
 </html>
