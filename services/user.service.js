@@ -110,10 +110,10 @@ const deleteUser = async (req, res, next) => {
 	try
 	{
         let { uid } = req;
-        const savedUser = await user.destroy({
-            where : { uid : uid }
+        await user.update({ social : null, socialKey : null, deleteYn : true }, {
+            where : { uid }
         });
-		return savedUser;
+		return 1;
 	}
 	catch (err)
 	{

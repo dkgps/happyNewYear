@@ -8,7 +8,8 @@ const getAllMessages = async (req, res, next) => {
 		const messageList = await message.findAll({
 			where : 
 			{
-				uid : uid
+				uid : uid,
+				deleteYn : false
 			},
 			order : 
 			[
@@ -30,7 +31,10 @@ const getMessage = async (req, res, next) => {
 	{
         let messageId = req.messageId;
 		const specificMessage = await message.findOne({
-			where: { messageId }
+			where: { 
+				messageId,
+				deleteYn : false
+			}
 		});
 		return specificMessage;
 	}
@@ -60,10 +64,10 @@ const deleteMessage = async (req, res, next) => {
 	try
 	{
         let { messageId } = req;
-        const savedMessage = await message.destroy({
+        await message.update({deleteYn : true}, {
             where : { messageId }
         });
-		return savedMessage;
+		return 1;
 	}
 	catch (err)
 	{
