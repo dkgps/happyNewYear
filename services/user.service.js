@@ -1,5 +1,8 @@
 const { user } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
 const axios = require('axios');
+const jwt = require('jsonwebtoken');
+require('dotenv').config(); // env 사용
+
 const kakaoLogin = async (req, res, next) => {
 	try
 	{
@@ -20,6 +23,7 @@ const kakaoLogin = async (req, res, next) => {
 
 		// 회원 존재 여부 확인
 		const kakaoUser = await user.findOne({
+			raw: true, nest: true,
 			where: { 
 				social :  userDto.social,
 				socialKey : userDto.socialKey
@@ -29,12 +33,14 @@ const kakaoLogin = async (req, res, next) => {
 		// 회원이 있으면 로그인
 		if(kakaoUser)
 		{
-			return { signUp : false, uid : kakaoUser.uid }
+			let token = jwtGenerator(kakaoUser);
+			return { signUp : false, uid : kakaoUser.uid, token }
 		}
 		// 없으면 회원 가입
 		{
-			const newUser = await user.create(userDto);
-			return { signUp : true, uid : newUser.uid }
+			const newUser = await user.create({raw: true, nest: true,},userDto);
+			let token = jwtGenerator(newUser);
+			return { signUp : true, uid : newUser.uid, token }
 		}
 		
 	}
@@ -119,6 +125,21 @@ const deleteUser = async (req, res, next) => {
 	{
 		console.error(err);
 		throw Error(`ERROR WHILE DELETE USER - ${err}`);
+	}
+}
+
+// 토큰 생성
+const jwtGenerator = (userDto) => {
+	try
+	{
+		return jwt.sign(
+			{ uid: userDto.uid, nickname: userDto.nickname },
+			process.env.JWT_SECRET_KEY, { expiresIn: process.env.JWT_ACCESS_EXP }
+		);
+	}
+	catch(err)
+	{
+		throw Error(`ERROR WHILE CREATE ACCESSTOKEN - ${err}`);
 	}
 }
 

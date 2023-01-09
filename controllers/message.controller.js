@@ -5,11 +5,15 @@ const getAllMessages = async(req, res, next) => {
 	{
 		let messageDto = req.query;
 		const messageList = await MessageService.getAllMessages(messageDto);
-		res.send(messageList);
+		let data = {
+			messageList,
+			count : messageList.length
+		}
+		return data;
 	}
 	catch (err)
 	{
-		res.status(400).json({ status : 400, message : err.message});
+		return({ status : 400, message : err.message});
 	}
 }
 

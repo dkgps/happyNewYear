@@ -11,10 +11,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    orderNum: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
     type: {
       type: DataTypes.STRING(45),
       allowNull: true
@@ -25,6 +21,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     message: {
       type: DataTypes.TEXT,
+      allowNull: true
+    },
+    exposure: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     },
     deleteYn: {
