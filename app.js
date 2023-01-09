@@ -27,6 +27,10 @@ app.get("/indexSub", (req, res) => {
     res.sendFile(__dirname + "/indexSub.html");
 });
 
+app.get("/indexSubLink", (req, res) => {
+    res.sendFile(__dirname + "/indexSubLink.html");
+});
+
 app.get("/kakaoCallback", (req, res) => {
     res.sendFile(__dirname + "/kakaoCallback.html");
 });
