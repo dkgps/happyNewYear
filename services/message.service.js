@@ -4,8 +4,8 @@ const { message } = require('../models/index'); // ./models/index.js에서 설�
 const getAllMessages = async (req, res, next) => {
 	try
 	{
-		let uid = req.uid;
-		const messageList = await message.findAll({
+		let uid = req.uid ? req.uid : 0;
+		const messageList = await message.findAll({ raw: true, nest:true,
 			where : 
 			{
 				uid : uid,
@@ -20,8 +20,7 @@ const getAllMessages = async (req, res, next) => {
 	}
 	catch (err)
 	{
-		console.error(err);
-        throw Error(`ERROR WHILE GET ALL MESSAGES - ${err}`);
+		return err;
 	}
 }
 

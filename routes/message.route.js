@@ -2,8 +2,11 @@ const express = require("express")
 const router = express.Router()
 const MessageController = require("../controllers/message.controller")
 
-// 특정 유저에게 쓴 전체 메시지 가져오기
-router.get("/", MessageController.getAllMessages)
+// 특정 유저의 메시지 리스트
+router.get("/", async(req,res) => {
+    const data = await MessageController.getAllMessages(req);
+    res.render("message", {data});
+})
 
 // 특정 메시지 정보 가져오기(req.query.messageId)
 router.get("/:messageId", MessageController.getMessage)
