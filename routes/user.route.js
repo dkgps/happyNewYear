@@ -5,6 +5,9 @@ const userController = require("../controllers/user.controller")
 // 카카오 로그인 / 회원가입
 router.post("/kakaoLogin", userController.kakaoLogin);
 
+// 카카오 로그인 / 회원가입
+router.post("/verifyToken", userController.verifyToken);
+
 // 전체 회원 리스트 가져오기
 router.get("/", userController.getAllUsers)
 

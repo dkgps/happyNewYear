@@ -190,6 +190,27 @@
     <script>
         $(function()
             {
+                // 토큰 값 확인 및 검증
+                let savedToken = localStorage.getItem("accessToken");
+                if(savedToken)
+                {
+                    let jsonData = {};
+                    jsonData.accessToken = savedToken;
+                    
+                    $.ajax({
+                        type: 'post',
+                        url: '/user/verifyToken',
+                        data : jsonData,
+                        dataType : 'json',
+                        success: function(res) {
+                            console.log(res);
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    })
+                }
+
                 // 전체동의
                 $(".checkForm").on("click", "#allAgree", function () 
                     {

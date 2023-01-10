@@ -5,7 +5,19 @@ const kakaoLogin = async(req,res,next) => {
 	try
 	{
 		const kakaoLogin = await UserService.kakaoLogin(req.body);
-		res.send({ status: 200, signUp : kakaoLogin.signUp, uid : kakaoLogin.uid, token });
+		res.send({ status: 200, signUp : kakaoLogin.signUp, uid : kakaoLogin.uid, token : kakaoLogin.token });
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
+const verifyToken = async(req,res,next) => {
+	try
+	{
+		const result = await UserService.verifyToken(req.body);
+		res.send(result);
 	}
 	catch (err)
 	{
@@ -78,6 +90,7 @@ const deleteUser = async (req, res, next) => {
 
 module.exports = {
 	kakaoLogin,
+	verifyToken,
 	getAllUsers,
 	getUser,
 	insertUser,
