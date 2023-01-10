@@ -13,7 +13,7 @@ const getAllMessages = async (req, res, next) => {
 			},
 			order : 
 			[
-				['orderNum','ASC']
+				['messageId','ASC']
 			]
 		});
 		return messageList;
