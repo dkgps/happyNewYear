@@ -52,6 +52,27 @@ const kakaoLogin = async (req, res, next) => {
 	
 }
 
+// 토큰 검증
+const verifyToken = async (req, res, next) => {
+	try
+	{
+		let token = req.accessToken;
+		const result = jwt.verify(token,process.env.JWT_SECRET_KEY, function(err, decoded) {
+			if(err)
+			{
+				throw new Error(err);
+			}
+			return decoded;
+		});
+		return result;
+	}
+	catch (err)
+	{
+		console.error(err);
+        throw Error(`ERROR WHILE VERIFYING ACCESSTOKEN - ${err}`);
+	}
+}
+
 // 전체 회원 리스트
 const getAllUsers = async (req, res, next) => {
 	try
@@ -145,6 +166,7 @@ const jwtGenerator = (userDto) => {
 
 module.exports = {
 	kakaoLogin,
+	verifyToken,
     getAllUsers,
     getUser,
     insertUser,
