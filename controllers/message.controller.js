@@ -5,11 +5,7 @@ const getAllMessages = async(req, res, next) => {
 	{
 		let messageDto = req.query;
 		const messageList = await MessageService.getAllMessages(messageDto);
-		let data = {
-			messageList,
-			count : messageList.length
-		}
-		return data;
+		return messageList;
 	}
 	catch (err)
 	{
