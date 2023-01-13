@@ -1,23 +1,22 @@
 const MessageService = require('../services/message.service'); // UserService 사용
 
-const getAllMessages = async(req, res, next) => {
-	try
-	{
-		let messageDto = req.query;
-		const messageList = await MessageService.getAllMessages(messageDto);
-		return messageList;
-	}
-	catch (err)
-	{
-		return({ status : 400, message : err.message});
-	}
-}
-
 const getMessage = async (req, res, next) => {
 	try
 	{
-		const encrypted = req.params.encryptedQueryString;
-		const savedMessage = await MessageService.getMessageList({encrypted});
+		let messageId = req.query.messageId;
+		const message = await MessageService.getMessage({messageId});
+		return message;
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
+const getMessageList = async (req, res, next) => {
+	try
+	{
+		const savedMessage = await MessageService.getMessageList(req);
 		return savedMessage;
 	}
 	catch (err)
@@ -65,8 +64,8 @@ const deleteMessage = async (req, res, next) => {
 
 
 module.exports = {
-	getAllMessages,
 	getMessage,
+	getMessageList,
 	insertMessage,
 	updateMessage,
 	deleteMessage

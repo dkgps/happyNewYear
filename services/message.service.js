@@ -1,41 +1,21 @@
 const { message } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
 require('dotenv').config(); // env 사용
 
-// 전체 메시지 리스트
-const getAllMessages = async (req, res, next) => {
-	try
-	{
-		let uid = req.uid ? req.uid : 0;
-		let page = req.page ? req.page : 0;
-		let perPage = req.perPage ? req.perPage : 6;
-		const messageList = await message.findAll({ raw: true, nest:true,
-			limit : perPage,
-			offset: page*perPage,
-			where : 
-			{
-				uid : uid,
-				deleteYn : false
-			},
-			order : 
-			[
-				['messageId','ASC']
-			]
-		});
-		return messageList;
-	}
-	catch (err)
-	{
-		return err;
-	}
-}
-
 const getMessageList = async (req, res, next) => {
 	try
 	{
-        let encrypted = req.encrypted;
-		let decrypted = atob(encrypted);
-		let uid = decrypted.indexOf("=") != -1 ? decrypted.split("=")[1] : 0;
+		// param값 복호화
+		const encrypted = req.params.encryptedQueryString;
+		const decrypted = atob(encrypted);
+		const uid = decrypted.indexOf("=") != -1 ? decrypted.split("=")[1] : 0;
+
+		// query값으로 넘어온 페이징 정보
+		let page 	= ( req.query.page ? parseInt(req.query.page) : 0 );
+		let perPage = ( req.query.perPage ? parseInt(req.query.perPage) : 6 );
+
 		const messageList = await message.findAll({ raw: true, nest:true,
+			limit : perPage,
+			offset: page * perPage,
 			where : 
 			{
 				uid : uid,
@@ -46,7 +26,12 @@ const getMessageList = async (req, res, next) => {
 				['messageId','ASC']
 			]
 		});
-		return messageList;
+
+		const total = await message.count({
+			where : {uid}
+		});
+		let result = { messageList, total };
+		return result;
 	}
 	catch (err)
 	{
@@ -108,7 +93,6 @@ const deleteMessage = async (req, res, next) => {
 
 
 module.exports = {
-    getAllMessages,
 	getMessageList,
 	getMessage,
 	insertMessage,
