@@ -131,18 +131,35 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .titleWrap h3{margin-top: 5px;font-size: 20px;font-weight: normal;}
 .mainWrap .mainImage{max-width: 330px; margin:0 auto;margin-top: 30px;width: 100%;position: relative;}
 .mainWrap .mainImage .messageContent{position: absolute;bottom: 0;width: 100%;}
-.mainWrap .mainImage .messageContent .i1{position: absolute;    bottom: 99px;left: 10px;}
+/* .mainWrap .mainImage .messageContent .i1{position: absolute;    bottom: 99px;left: 10px;} */
 .mainWrap .mainImage .messageContent .i1 img{width: 48px;height: 48px;}
-.mainWrap .mainImage .messageContent .i2{position: absolute;    bottom: 113px;left: 57px;}
+/* .mainWrap .mainImage .messageContent .i2{position: absolute;    bottom: 113px;left: 57px;} */
 .mainWrap .mainImage .messageContent .i2 img{width: 52px;height: 52px;}
-.mainWrap .mainImage .messageContent .i3{position: absolute;bottom: 63px;left: 43px;}
+/* .mainWrap .mainImage .messageContent .i3{position: absolute;bottom: 63px;left: 43px;} */
 .mainWrap .mainImage .messageContent .i3 img{width: 57px;height: 57px;}
-.mainWrap .mainImage .messageContent .i4{position: absolute;bottom: 42px;right: 167px;}
+/* .mainWrap .mainImage .messageContent .i4{position: absolute;bottom: 42px;right: 167px;} */
 .mainWrap .mainImage .messageContent .i4 img{width: 60px;height: 60px;}
-.mainWrap .mainImage .messageContent .i5{position: absolute;bottom: 48px;right: 109px;}
+/* .mainWrap .mainImage .messageContent .i5{position: absolute;bottom: 48px;right: 109px;} */
 .mainWrap .mainImage .messageContent .i5 img{width: 56px;height: 59px;}
-.mainWrap .mainImage .messageContent .i6{position: absolute;right: 62px;bottom: 70px;}
+/* .mainWrap .mainImage .messageContent .i6{position: absolute;right: 62px;bottom: 70px;} */
 .mainWrap .mainImage .messageContent .i6 img{width: 47px;height: 47px;}
+
+
+.mainWrap .mainImage .messageContent>div:nth-of-type(1){position: absolute;    bottom: 99px;left: 10px;}
+.mainWrap .mainImage .messageContent>div:nth-of-type(2){position: absolute;    bottom: 113px;left: 57px;}
+.mainWrap .mainImage .messageContent>div:nth-of-type(3){position: absolute;bottom: 63px;left: 43px;}
+.mainWrap .mainImage .messageContent>div:nth-of-type(4){position: absolute;bottom: 42px;right: 167px;}
+.mainWrap .mainImage .messageContent>div:nth-of-type(5){position: absolute;bottom: 48px;right: 109px;}
+.mainWrap .mainImage .messageContent>div:nth-of-type(6){position: absolute;right: 62px;bottom: 70px;}
+
+.mainWrap .mainImage .messageContent>div img.imgClass1{width: 48px;height: 48px;}
+.mainWrap .mainImage .messageContent>div img.imgClass2{width: 52px;height: 52px;}
+.mainWrap .mainImage .messageContent>div img.imgClass3{width: 57px;height: 57px;}
+.mainWrap .mainImage .messageContent>div img.imgClass4{width: 60px;height: 60px;}
+.mainWrap .mainImage .messageContent>div img.imgClass5{width: 56px;height: 59px;}
+.mainWrap .mainImage .messageContent>div img.imgClass6{width: 47px;height: 47px;}
+
+
 .mainWrap .mainImage img{width: 100%;}
 .mainWrap .pageNum{font-size: 22px;text-align: center;margin-top: 10px;}
 .mainWrap .pageNum a{font-size: 22px;}
