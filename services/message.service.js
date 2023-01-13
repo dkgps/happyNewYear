@@ -1,4 +1,5 @@
 const { message } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
+require('dotenv').config(); // env 사용
 
 // 전체 메시지 리스트
 const getAllMessages = async (req, res, next) => {
@@ -28,6 +29,32 @@ const getAllMessages = async (req, res, next) => {
 	}
 }
 
+const getMessageList = async (req, res, next) => {
+	try
+	{
+        let encrypted = req.encrypted;
+		let decrypted = atob(encrypted);
+		let uid = decrypted.indexOf("=") != -1 ? decrypted.split("=")[1] : 0;
+		const messageList = await message.findAll({ raw: true, nest:true,
+			where : 
+			{
+				uid : uid,
+				deleteYn : false
+			},
+			order : 
+			[
+				['messageId','ASC']
+			]
+		});
+		return messageList;
+	}
+	catch (err)
+	{
+		console.error(err);
+		throw Error(`ERROR WHILE GET MESSAGELIST - ${err}`);
+	}
+}
+
 // 특정 메시지 정보 가져오기 (find by messageId)
 const getMessage = async (req, res, next) => {
 	try
@@ -52,8 +79,8 @@ const getMessage = async (req, res, next) => {
 const insertMessage = async (messageDto, res, next) => {
 	try
 	{
-        const savedMessage = await message.create(messageDto);
-		return savedMessage;
+        await message.create(messageDto);
+		return 1;
 	}
 	catch (err)
 	{
@@ -82,6 +109,7 @@ const deleteMessage = async (req, res, next) => {
 
 module.exports = {
     getAllMessages,
+	getMessageList,
 	getMessage,
 	insertMessage,
 	deleteMessage

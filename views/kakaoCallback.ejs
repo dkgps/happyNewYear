@@ -29,9 +29,6 @@
     
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
     integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
-    <script>
-        Kakao.init('a489738aaecd29c5839531d96b2af3b8'); 
-    </script>
 </head>
 <style>
     /* body{background-color: red;} */
@@ -62,10 +59,6 @@
                     <a id="kakao-login-btn" class="inKakao" href="javascript:loginWithKakao()">
                         <img src="/static/img/카카오톡 로고 3.png" alt="">
                         카카오 계정으로 계속하기
-                    </a>
-                    <a class="inTweeter">
-                        <img src="/static/img/facebook-white-circle-logo-facebook-blanc-symbol-first-aid-trademark-text-transparent-png-143073 (1).png" alt="">
-                        페이스북 계정으로 계속하기
                     </a>
                     <a class="inGoogle">
                         <img src="/static/img/google.png" alt="">
@@ -188,6 +181,8 @@
     <!-- 모바일 네비게이션 -->
     </div>
     <script>
+        let base_url = "<%=BASE_URL%>";
+
         getAccessToken() 
         function getAccessToken() 
         {
@@ -206,8 +201,8 @@
                     cache: false,
                     data: {
                     grant_type: "authorization_code",
-                    client_id: "1c3352c94469a82a90b88fe62f776596",
-                    redirect_uri: "http://localhost:3000/kakaoCallback",
+                    client_id: "<%=KAKAO_REST_API_KEY%>",
+                    redirect_uri: `${base_url}/kakaoCallback`,
                     // 위에서 가져온 url code 가져오기
                     code: code
                     },
@@ -239,40 +234,28 @@
                                 // const accessToken = {"변수1":"변수값1"}
                                 // alert(response)
                                 console.log("카카오 로그인: ", response);
+                                // localStorage에 accessToken 저장 (로그인 유지);
+                                localStorage.setItem('accessToken', response.token);
                                 if(response.signUp === true)
                                 {
-                                    window.location.href='http://localhost:3000/signUp?uid='+response.uid
+                                    // 가입 화면으로 이동
+                                    window.location.href=`${base_url}/signUp?uid=${response.uid}`;
                                 }
                                 else if(response.signUp === false)
                                 {
-                                    window.location.href='http://localhost:3000/indexSub?uid='+response.uid
+                                    // 쿼리 스트링 암호화
+                                    const encryptedString = window.btoa(`?uid=${response.uid}`);
+                                    // 새해상 화면으로 이동
+                                    location.href = `/message/${encryptedString}`;
                                 }
                             },
-                            error:function(){  
+                            error:function(err){  
                                 //에러가 났을 경우 실행시킬 코드
                                 // alert("실패")
-                                console.log("카카오 로그인: error");
+                                console.log("카카오 로그인 에러: ",err);
                             }
                         })
                 }
-
-            // if(token) {
-            // Kakao.Auth.setAccessToken(token);
-            // Kakao.Auth.getStatusInfo()
-            //     .then(function(res) {
-            //     if (res.status === 'connected') {
-
-            //         // console.log("카카오 로그인 성공")
-            //         document.getElementById('token-result').innerText
-            //         = 'login success, token: ' + Kakao.Auth.getAccessToken();
-
-
-            //     }
-            //     })
-            //     .catch(function(err) {
-            //     Kakao.Auth.setAccessToken(null);
-            //     });
-            // }
         }
     </script>
 </body>

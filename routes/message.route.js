@@ -9,7 +9,10 @@ router.get("/", async(req,res) => {
 })
 
 // 특정 메시지 정보 가져오기(req.query.messageId)
-router.get("/:messageId", MessageController.getMessage)
+router.get("/:encryptedQueryString", async(req,res) => {
+    const messageList =  await MessageController.getMessage(req);
+    res.render("message",{messageList});
+})
 
 // 메시지 등록
 router.post("/", MessageController.insertMessage)

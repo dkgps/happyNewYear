@@ -14,10 +14,6 @@ app.use(bodyParser.json());
 //==================================================================
 app.use('/static', express.static(__dirname + '/public'));
 
-// 페이지 로딩 함수
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
-});
 
 app.get("/signUp", (req, res) => {
     res.sendFile(__dirname + "/signUp.html");
@@ -31,13 +27,12 @@ app.get("/indexSubLink", (req, res) => {
     res.sendFile(__dirname + "/indexSubLink.html");
 });
 
-app.get("/kakaoCallback", (req, res) => {
-    res.sendFile(__dirname + "/kakaoCallback.html");
-});
-
 //==================================================================
 //  Load the router module in the app
 //==================================================================
+const indexRoute = require('./routes/index');
+app.use('/', indexRoute);
+
 const userRoute = require("./routes/user.route")
 app.use("/user", userRoute);
 

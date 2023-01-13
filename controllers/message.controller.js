@@ -16,9 +16,9 @@ const getAllMessages = async(req, res, next) => {
 const getMessage = async (req, res, next) => {
 	try
 	{
-		const messageId = req.params.messageId;
-		const savedMessage = await MessageService.getMessage({messageId});
-		res.send(savedMessage);
+		const encrypted = req.params.encryptedQueryString;
+		const savedMessage = await MessageService.getMessageList({encrypted});
+		return savedMessage;
 	}
 	catch (err)
 	{
@@ -29,8 +29,8 @@ const getMessage = async (req, res, next) => {
 const insertMessage = async (req, res, next) => {
 	try
 	{
-		const savedMessage = await MessageService.insertMessage(req.body);
-		res.send(savedMessage);
+		const result = await MessageService.insertMessage(req.body);
+		res.send(result.toString());
 	}
 	catch (err)
 	{
