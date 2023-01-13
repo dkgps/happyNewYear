@@ -22,7 +22,7 @@ router.get("/:encryptedQueryString", async(req,res) => {
     }
     catch(err)
     {
-        res.redirect("/");
+        res.status(400).render('error');
     }
     
 })
