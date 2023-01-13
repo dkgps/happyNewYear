@@ -131,12 +131,18 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .titleWrap h3{margin-top: 5px;font-size: 20px;font-weight: normal;}
 .mainWrap .mainImage{max-width: 330px; margin:0 auto;margin-top: 30px;width: 100%;position: relative;}
 .mainWrap .mainImage .messageContent{position: absolute;bottom: 0;width: 100%;}
-.mainWrap .mainImage .messageContent .i1{position: absolute;bottom: 65px;left: 10px;}
-.mainWrap .mainImage .messageContent .i2{position: absolute;bottom: 82px;left: 50px;}
-.mainWrap .mainImage .messageContent .i3{position: absolute;bottom: 29px;left: 43px;}
-.mainWrap .mainImage .messageContent .i4{position: absolute;bottom: 12px;right: 167px;}
-.mainWrap .mainImage .messageContent .i5{position: absolute;bottom: 17px;right: 109px;}
-.mainWrap .mainImage .messageContent .i6{position: absolute;right: 62px;bottom: 40px;}
+.mainWrap .mainImage .messageContent .i1{position: absolute;    bottom: 99px;left: 10px;}
+.mainWrap .mainImage .messageContent .i1 img{width: 48px;height: 48px;}
+.mainWrap .mainImage .messageContent .i2{position: absolute;    bottom: 113px;left: 57px;}
+.mainWrap .mainImage .messageContent .i2 img{width: 52px;height: 52px;}
+.mainWrap .mainImage .messageContent .i3{position: absolute;bottom: 63px;left: 43px;}
+.mainWrap .mainImage .messageContent .i3 img{width: 57px;height: 57px;}
+.mainWrap .mainImage .messageContent .i4{position: absolute;bottom: 42px;right: 167px;}
+.mainWrap .mainImage .messageContent .i4 img{width: 60px;height: 60px;}
+.mainWrap .mainImage .messageContent .i5{position: absolute;bottom: 48px;right: 109px;}
+.mainWrap .mainImage .messageContent .i5 img{width: 56px;height: 59px;}
+.mainWrap .mainImage .messageContent .i6{position: absolute;right: 62px;bottom: 70px;}
+.mainWrap .mainImage .messageContent .i6 img{width: 47px;height: 47px;}
 .mainWrap .mainImage img{width: 100%;}
 .mainWrap .pageNum{font-size: 22px;text-align: center;margin-top: 10px;}
 .mainWrap .pageNum a{font-size: 22px;}
@@ -145,7 +151,7 @@ button{font-family: 'Gaegu' !important;}
 
 /* mainWrap */
 .foodChoice{display: flex;gap: 13px;flex-wrap: wrap;width:100%;max-width: 308px;margin: 0 auto;margin-top: 45px;}
-.foodChoice .checks input[type="radio"] + label .image{width: 93px;height: 93px;background-color: #fffcf5c1;border-radius: 4px;position: relative;}
+.foodChoice .checks input[type="radio"] + label .image{box-sizing: border-box;width: 90px;height: 90px;background-color: #fffcf5c1;border-radius: 4px;position: relative;}
 .foodChoice .checks input[type="radio"] + label .image img{width: 100%;width: 100%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
 .foodChoice .checks input[type="radio"]:checked + label .image{border: 2px solid #674F3D;}
 .foodChoice .checks input[type="radio"]:checked + label .image img{width: 100%;}

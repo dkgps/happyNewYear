@@ -167,7 +167,7 @@
                 </div>
                 <div class="writeForm">
                     <div class="choiced">
-                        <img class="active" src="/static/img/i1.png" alt="">
+                        <img src="/static/img/i1.png" alt="">
                         <img src="/static/img/i2.png" alt="">
                         <img src="/static/img/i3.png" alt="">
                         <img src="/static/img/i4.png" alt="">
@@ -182,7 +182,7 @@
                     <label for="public" class="chk_box">
                         <input type="checkbox" id="public" />
                         <span class="on"></span>
-                        연하장 주인에게만 보여줄래요(비공개)
+                        모두에게 보여줄래요(공개)
                     </label>
                 </div>
                 <div class="submitBtn completeArea line">
@@ -216,8 +216,22 @@
             {
                 $(".choiceStep").removeClass("block")
                 $(".writeStep").addClass("block")
+               
+                //선택한 새해 음식 연하장폼에 출력하기
+                if($(".foodChoice .checks input[type='radio']").is(":checked"))
+                {
+                    
+                    let choicedFood = $(".foodChoice .checks input[type='radio']:checked").val()
+                    
+                    $(".mainWrap .writeStep .writeForm .choiced").append('<img class="active" src="/static/img/i'+choicedFood+'.png">')
+                }
+                
+                
+                
             }
         )
+
+        
         
         // 연하장 폼
         $(".writeStep .prev").on("click",function()
@@ -253,13 +267,18 @@
                         dataType : 'json',
                         success : function(res){
                             // console.log(res)
-                            if(res === 1)
+                            // if(res === 1)
+                            // {
+                            //     window.location.href='http://localhost:3000/indexSubLink?uid='+uidData
+                            // }
+                            for(var i = 0; i < res.length; i++)
                             {
-                                window.location.href='http://localhost:3000/indexSubLink?uid='+uidData
+                                console.log(i)
                             }
+                            window.location.href='http://localhost:3000/message?uid='+uidData
                         },
-                        error : function(){
-                            alert("서버요청실패");
+                        error : function(err){
+                            console.log(err)
                         }
                 })
 

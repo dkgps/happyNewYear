@@ -58,11 +58,16 @@
                 <div class="mainImage">
                     <img src="/static/img/mainImage.png" alt="">
                     <!-- 메시지가 생긴 경우 -->
-                    <!-- <div class="messageContent">
-                        <div class="i1">
-                            <img src="/static/img/i1.png" alt="" style="width: 48px;height: 48px;">
+                    <div class="messageContent">
+                    <% 
+                        for ( var i = 0; i < messageList.length; i++)
+                        { 
+                    %>
+                        <!-- <h4><%=messageList[i].type%></h4> -->
+                        <div class="i<%-messageList[i].messageId%>">
+                            <img src="/static/img/i<%-messageList[i].type%>.png" alt="">
                         </div>
-                        <div class="i2">
+                        <!-- <div class="i2">
                             <img src="/static/img/i2.png" alt="" style="width: 52px;height: 52px;">
                         </div>
                         <div class="i3">
@@ -76,8 +81,12 @@
                         </div>
                         <div class="i6">
                             <img src="/static/img/i6.png" alt="" style="width: 47px;height: 47px;">
-                        </div>
-                    </div> -->
+                        </div> -->
+                    <% 
+                        } 
+                    %>
+                    </div> 
+                    
                 </div>
                 <div class="pageNum">
                     <a href=""><<</a><span class="currentNum">1</span>/<span class="allNum">1</span><a href="">>></a>
@@ -100,54 +109,56 @@
                     </h2>
                 </div>
                 <div class="foodChoice">
-                    <div class="checks">
-                        <input type="radio" id="i1" name="food"> 
-                        <label for="i1">
-                            <div class="image">
-                                <img src="/static/img/i1.png" alt="">
-                            </div>
-                        </label> 
-                    </div>
-                    <div class="checks">
-                        <input type="radio" id="i2" name="food"> 
-                        <label for="i2">
-                            <div class="image">
-                                <img src="/static/img/i2.png" alt="">
-                            </div>
-                        </label> 
-                    </div>
-                    <div class="checks">
-                        <input type="radio" id="i3" name="food"> 
-                        <label for="i3">
-                            <div class="image">
-                                <img src="/static/img/i3.png" alt="">
-                            </div>
-                        </label> 
-                    </div>
-                    <div class="checks">
-                        <input type="radio" id="i4" name="food"> 
-                        <label for="i4">
-                            <div class="image">
-                                <img src="/static/img/i4.png" alt="">
-                            </div>
-                        </label> 
-                    </div>
-                    <div class="checks">
-                        <input type="radio" id="i5" name="food"> 
-                        <label for="i5">
-                            <div class="image">
-                                <img src="/static/img/i5.png" alt="">
-                            </div>
-                        </label> 
-                    </div>
-                    <div class="checks">
-                        <input type="radio" id="i6" name="food"> 
-                        <label for="i6">
-                            <div class="image">
-                                <img src="/static/img/i6.png" alt="">
-                            </div>
-                        </label> 
-                    </div>
+                        <div class="checks">
+                            <input type="radio" id="i1" name="food"> 
+                            <label for="i1">
+                                <div class="image">
+                                    <img src="/static/img/i1.png" alt="">
+                                </div>
+                                
+                            </label> 
+                        </div>
+                        <div class="checks">
+                            <input type="radio" id="i2" name="food"> 
+                            <label for="i2">
+                                <div class="image">
+                                    <img src="/static/img/i2.png" alt="">
+                                </div>
+                            </label> 
+                        </div>
+                        <div class="checks">
+                            <input type="radio" id="i3" name="food"> 
+                            <label for="i3">
+                                <div class="image">
+                                    <img src="/static/img/i3.png" alt="">
+                                </div>
+                            </label> 
+                        </div>
+                        <div class="checks">
+                            <input type="radio" id="i4" name="food"> 
+                            <label for="i4">
+                                <div class="image">
+                                    <img src="/static/img/i4.png" alt="">
+                                </div>
+                            </label> 
+                        </div>
+                        <div class="checks">
+                            <input type="radio" id="i5" name="food"> 
+                            <label for="i5">
+                                <div class="image">
+                                    <img src="/static/img/i5.png" alt="">
+                                </div>
+                            </label> 
+                        </div>
+                        <div class="checks">
+                            <input type="radio" id="i6" name="food"> 
+                            <label for="i6">
+                                <div class="image">
+                                    <img src="/static/img/i6.png" alt="">
+                                </div>
+                            </label> 
+                        </div> 
+                    
                 </div>
                 <div class="submitBtn completeArea">
                     <button class="prev">이전</button>
@@ -196,6 +207,7 @@
     <!-- 모바일 네비게이션 -->
     </div>
     <script>
+        
     </script>
 </body>
 </html>
