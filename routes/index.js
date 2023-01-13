@@ -16,5 +16,8 @@ router.get('/kakaoCallback', function(req,res,next) {
 	})
 })
 
+router.use((req, res, next) => {
+    res.status(400).render('error');
+});
 
 module.exports = router;
