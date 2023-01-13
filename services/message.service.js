@@ -5,7 +5,11 @@ const getAllMessages = async (req, res, next) => {
 	try
 	{
 		let uid = req.uid ? req.uid : 0;
+		let page = req.page ? req.page : 0;
+		let perPage = req.perPage ? req.perPage : 6;
 		const messageList = await message.findAll({ raw: true, nest:true,
+			limit : perPage,
+			offset: page*perPage,
 			where : 
 			{
 				uid : uid,
