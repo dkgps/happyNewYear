@@ -2,16 +2,13 @@ const express = require("express")
 const router = express.Router()
 const MessageController = require("../controllers/message.controller")
 
-// 특정 유저의 메시지 리스트
-router.get("/", async(req,res) => {
-    const messageList = await MessageController.getAllMessages(req);
-    res.render("message", {messageList});
-})
-
 // 특정 메시지 정보 가져오기(req.query.messageId)
 router.get("/:encryptedQueryString", async(req,res) => {
-    const messageList =  await MessageController.getMessage(req);
-    res.render("message",{messageList});
+    const result =  await MessageController.getMessageList(req);
+    res.render("message",{
+        messageList : result.messageList,
+        total       : result.total
+    });
 })
 
 // 메시지 등록
