@@ -9,6 +9,11 @@ const getMessageList = async (req, res, next) => {
 		const decrypted = atob(encrypted);
 		const uid = decrypted.indexOf("=") != -1 ? decrypted.split("=")[1] : 0;
 
+		if(uid == 0 )
+		{
+			throw new Error();
+		}
+		
 		// query값으로 넘어온 페이징 정보
 		let page 	= ( req.query.page ? parseInt(req.query.page) : 0 );
 		let perPage = ( req.query.perPage ? parseInt(req.query.perPage) : 6 );
