@@ -309,7 +309,7 @@
         function loginWithKakao() {
             Kakao.Auth.authorize({
             // redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
-            redirectUri: `${base_url}/kakaoCallback`,
+            redirectUri: `${base_url}/auth/kakaoCallback`,
             });
 
             Kakao.API.request({

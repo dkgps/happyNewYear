@@ -30,14 +30,26 @@ app.get("/indexSubLink", (req, res) => {
 //==================================================================
 //  Load the router module in the app
 //==================================================================
-const indexRoute = require('./routes/index');
-app.use('/', indexRoute);
+// 페이지 로딩 함수
+app.get("/", (req, res) => {
+    res.redirect("/auth");
+});
+
+app.get("/kakaoCallback", (req, res) => {
+    res.redirect("/auth/kakaoCallback");
+});
+
+const authRoute = require('./routes/auth.route');
+app.use('/auth', authRoute);
 
 const userRoute = require("./routes/user.route")
 app.use("/user", userRoute);
 
 const messageRoute = require("./routes/message.route")
 app.use("/message", messageRoute);
+
+const indexRoute = require('./routes/index');
+app.use('/', indexRoute);
 
 
 //==================================================================

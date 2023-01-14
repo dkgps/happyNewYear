@@ -202,7 +202,7 @@
                     data: {
                     grant_type: "authorization_code",
                     client_id: "<%=KAKAO_REST_API_KEY%>",
-                    redirect_uri: `${base_url}/kakaoCallback`,
+                    redirect_uri: `${base_url}/auth/kakaoCallback`,
                     // 위에서 가져온 url code 가져오기
                     code: code
                     },
