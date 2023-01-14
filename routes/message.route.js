@@ -37,9 +37,6 @@ router.get("/:encryptedQueryString", async(req,res) => {
 // 메시지 등록
 router.post("/", MessageController.insertMessage)
 
-// 메시지 수정
-router.put("/", MessageController.updateMessage);
-
 // 메시지 삭제
 router.delete("/:messageId", MessageController.deleteMessage)
 

@@ -37,18 +37,6 @@ const insertMessage = async (req, res, next) => {
 	}
 }
 
-const updateMessage = async (req, res, next) => {
-	try
-	{
-		const result = await MessageService.updateMessage(req.body);
-		res.send({ status : 200, result : result.toString() });
-	}
-	catch (err)
-	{
-		res.status(400).json({ status : 400, message : err.message});
-	}
-}
-
 const deleteMessage = async (req, res, next) => {
 	try
 	{
@@ -67,6 +55,5 @@ module.exports = {
 	getMessage,
 	getMessageList,
 	insertMessage,
-	updateMessage,
 	deleteMessage
 }
