@@ -33,10 +33,15 @@ const getMessageList = async (req, res, next) => {
 			]
 		});
 
-		const total = await message.count({
+		let total = await message.count({
 			where : {uid}
 		});
-		let result = { messageList, total, uid, nickname };
+
+		// 전체 페이지 수 
+		if (!total) total = 0;
+		let totalPage = Math.ceil(total /  perPage);
+
+		let result = { messageList, total, uid, nickname, page, perPage, totalPage };
 		return result;
 	}
 	catch (err)
