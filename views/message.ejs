@@ -96,7 +96,7 @@
                 </div>
                 <div class="submitBtn linkCopy beforeInvite none">
                     <button class="decorate">새해상 꾸며주기</button>
-                    <button class="create">나도 새해상 만들기</button>
+                    <button class="create createNewDesk">나도 새해상 만들기</button>
                 </div> 
                 
             </div>
@@ -240,6 +240,10 @@
                             console.log("초대받은 연하장");
                             $(".beforeInvite").removeClass("none");
                             $(".invite").addClass("none");
+                            if(jsonData.accessToken !== "")
+                            {
+                                $(".createNewDesk").addClass("none")
+                            }
                         }
                     },
                     error: function(err) {
