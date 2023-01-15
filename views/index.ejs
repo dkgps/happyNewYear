@@ -202,10 +202,9 @@
                         data : jsonData,
                         dataType : 'json',
                         success: function(res) {
-                            // 쿼리 스트링 암호화
-                            const encryptedString = window.btoa(`?uid=${res.uid}`);
-                            // 새해상 화면으로 이동
-                            location.href = `/message/${encryptedString}`;
+                            let queryString = `?uid=${res.uid}&nickname=${res.nickname}`
+                            let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
+                            location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동
                         },
                         error: function(err) {
                             // localStorage에서 accessToken을 지우고 메인 화면으로 이동
