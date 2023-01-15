@@ -163,7 +163,6 @@
                         var uidData = URLSearch.get("uid")
                         var name = $("#name").val();
                         var emailData = $("#email").val();
-                        var allAgree = $("#allAgree:checked").val();
                         var publicScope = $(".publicScope .checks input[name='scopeLine']:checked").val();
                         var jsonData = {
                             uid:uidData, 
@@ -186,8 +185,8 @@
                                 let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
                                 location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동
                             },
-                            error : function(){
-                                alert("서버요청실패");
+                            error : function(err){
+                                console.log(err)
                             }
                         })
                     }
