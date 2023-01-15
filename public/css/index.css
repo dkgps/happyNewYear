@@ -181,16 +181,16 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
 .mainWrap .submitBtn .next{width: calc(70% - 5px);}
 .mainWrap .writeStep{}
-.wrap.signGage .writeForm{position: absolute;width:calc(100% - 40px); max-width:780px;left: 0;right: 0;margin: auto;}
-.wrap.signGage .writeForm{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
-.wrap.signGage .writeForm .choiced{position: absolute;right: 10px;top: -29px;}
-.wrap.signGage .writeForm img{display: none;width: 63px;}
-.wrap.signGage .writeForm img.active{display: block;}
-.wrap.signGage .writeForm  h3{font-size: 22px;}
-.wrap.signGage .writeForm  h2{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #674f3d36;}
-/* .wrap.signGage .writeForm  #nickName::placeholder{font-family: 'Gaegu';color: #674f3d6e;font-size: 24px;} */
-.wrap.signGage .writeForm  p{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
-/* .wrap.signGage .writeForm  #writeContent::placeholder{color: #674f3d6e;} */
+.wrap.signGage .writeFormModal{position: absolute;width:calc(100% - 40px); max-width:780px;left: 0;right: 0;margin: auto;}
+.wrap.signGage .writeFormModal{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
+.wrap.signGage .writeFormModal .choiced{position: absolute;right: 10px;top: -29px;}
+.wrap.signGage .writeFormModal img{display: none;width: 63px;}
+.wrap.signGage .writeFormModal img.active{display: block;}
+.wrap.signGage .writeFormModal  h3{font-size: 22px;}
+.wrap.signGage .writeFormModal  h2{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #674f3d36;}
+/* .wrap.signGage .writeFormModal  #nickName::placeholder{font-family: 'Gaegu';color: #674f3d6e;font-size: 24px;} */
+.wrap.signGage .writeFormModal  p{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
+/* .wrap.signGage .writeFormModal  #writeContent::placeholder{color: #674f3d6e;} */
 
 .mainWrap .writeForm{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
 .mainWrap .writeStep h3{font-size: 22px;}
@@ -203,7 +203,7 @@ button{font-family: 'Gaegu' !important;}
 
 /* message */
 .messageClick{}
-/* .messageClick>.writeForm{display: none;} */
+/* .messageClick>.writeFormModal{display: none;} */
 @media(max-width: 450px){
   /* .mainWrap .mainImage{max-width: 450px;width: calc(100% + 30px);margin:0 auto;margin-left: -15px;} */
 }

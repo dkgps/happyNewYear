@@ -70,7 +70,7 @@
                                 <%-messageList[i].writer%>
                             </div> -->
 
-                            <div class="writeForm none" style="position: fixed;top: 40px;bottom: 40px;margin: auto;z-index: 999;">
+                            <div class="writeFormModal none" style="position: fixed;top: 40px;bottom: 40px;margin: auto;z-index: 999;">
                                 <div class="choiced">
                                     <img src="/static/img/i<%-messageList[i].type%>.png" style="display: block;top: -11px;" alt="">
                                 </div>
@@ -162,7 +162,7 @@
                 </div>
                 <div class="submitBtn completeArea">
                     <button class="prev">이전</button>
-                    <button class="next">완료</button>
+                    <button class="next">다음</button>
                 </div>
             </div>
 
@@ -240,7 +240,7 @@
             $(".btnDefault").on("click",function()
                 {
                     // $(this).parents(".writeForm").fadeOut()
-                    // $(this).parents(".writeForm").css({"display":"none"})
+                    $(this).parents(".writeFormModal").addClass("none")
                     // $(".messageClick>.writeForm").fadeOut()
                     // console.log(287364827)
                     // $(".messageClick>.writeForm").fadeOut
@@ -252,9 +252,19 @@
                 }
             )
 
-            $(".messageClick").on("click",function()
+            $(".messageClick>img").on("click",function()
                 {
-                    $(this).children(".writeForm").toggleClass("none")
+                    // $(this).children(".writeFormModal").css({"display":"block"})
+                    // $(this).children(".writeForm").toggleClass("none")
+                    $(this).siblings(".writeFormModal").removeClass("none")
+
+                    // if($(this).children(".writeForm").hasClass("none"))
+                    // {
+                    //     $(this).children(".writeForm").removeClass("none")
+                    // }
+                    // else{
+                        
+                    // }
                 }
             )
 
