@@ -281,8 +281,17 @@
 
             $(".choiceStep .next").on("click",function()
                 {
+                    var foodCheck = $("input[name='food']").is(":checked");
+                    // scopeCheck = $.trim( scopeCheck );
+                    if( foodCheck === false )
+                    {
+                        alert("음식을 선택해주세요");
+                        return; 
+                    }  
+
                     $(".choiceStep").removeClass("block")
                     $(".writeStep").addClass("block")
+
                 
                     //선택한 새해 음식 연하장폼에 출력하기
                     if($(".foodChoice .checks input[type='radio']").is(":checked"))
@@ -318,6 +327,7 @@
                     var message = $('.mainWrap .writeStep #writeContent').val();
                     var exposure = $('input:checkbox[id=public]').is(':checked');
 
+
                     let jsonData2 = {
                         uid:ownerUid,
                         type:foodType,
@@ -325,6 +335,17 @@
                         message,
                         exposure,
                     }
+
+                    if( writer === "" )
+                    {
+                        alert("닉네임을 설정해주세요");
+                        return; 
+                    }  
+                    if( message === "" )
+                    {
+                        alert("메시지를 작성해주세요");
+                        return; 
+                    }  
 
                     // console.log(jsonData2)
 
