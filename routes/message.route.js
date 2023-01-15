@@ -24,7 +24,9 @@ router.get("/:encryptedQueryString", async(req,res) => {
         const result =  await MessageController.getMessageList(req);
         res.render("message",{
             messageList : result.messageList,
-            total       : result.total
+            total       : result.total,
+            owner       : result.uid,
+            ownerNickname : result.nickname,
         });
     }
     catch(err)
