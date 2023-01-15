@@ -47,6 +47,7 @@ body {
   color: #674F3D;
   background-color: #FEE8AF;
 }
+.none{display: none;}
 .wrapCenter{ min-height: 35.5rem;background-size: 55%; height: 100%;display: flex;align-items: center;justify-content: center;}
 section{}
 button{font-family: 'Gaegu' !important;}
@@ -77,6 +78,9 @@ button{font-family: 'Gaegu' !important;}
 .signGage .stepGage.active{}
 .signGage .stepGage.active .inGage{width: 100%;border-radius:0;}
 .signUpWrap{}
+.signUpWrap.mainWrap{}
+.signUpWrap.mainWrap .tab{display: none;}
+.signUpWrap.mainWrap .tab.block{display: block;}
 .signUpWrap .title{font-size: 32px;margin-top: 50px;position: relative;}
 .signUpWrap .title::after{top: -31px;left: 178px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/icon2.png');width: 54px;height: 55px;}
 .signUpWrap .title span{font-weight: bold;color: #000;}
@@ -176,7 +180,7 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
 .mainWrap .submitBtn .next{width: calc(70% - 5px);}
 .mainWrap .writeStep{}
-.wrap.signGage .writeForm{display: none; position: absolute;width:calc(100% - 40px); max-width:780px;left: 0;right: 0;margin: auto;}
+.wrap.signGage .writeForm{position: absolute;width:calc(100% - 40px); max-width:780px;left: 0;right: 0;margin: auto;}
 .wrap.signGage .writeForm{position: relative;background-color: #fffade71;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
 .wrap.signGage .writeForm .choiced{position: absolute;right: 10px;top: -29px;}
 .wrap.signGage .writeForm img{display: none;width: 63px;}
