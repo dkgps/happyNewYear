@@ -355,14 +355,10 @@
                             data : jsonData2,
                             dataType : 'json',
                             success : function(response){
-                                // console.log(res)
-                                // if(res === 1)
-                                // {
-                                //     window.location.href='http://localhost:3000/indexSubLink?uid='+uidData
-                                // }
-
-                                // window.location.href=`${base_url}/auth/signUp?uid=${response.uid}`;
+                                
                                 console.log(response)
+                                location.reload();
+                                
                             },
                             error : function(err){
                                 console.log(err,"에러")
