@@ -233,7 +233,7 @@
                                 // 회원 가입
                                 if(response.signUp === true)
                                 {
-                                    window.location.href=`${base_url}/signUp?uid=${response.uid}`; // 가입 화면으로 이동
+                                    window.location.href=`${base_url}/auth/signUp?uid=${response.uid}`; // 가입 화면으로 이동
                                 }
                                 // 로그인
                                 else if(response.signUp === false)
