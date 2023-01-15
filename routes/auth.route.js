@@ -16,4 +16,10 @@ router.get('/kakaoCallback', function(req,res,next) {
 	})
 })
 
+router.get("/signUp", (req, res) => {
+	res.render('signUp',{
+		BASE_URL : process.env.BASE_URL,
+	})
+});
+
 module.exports = router;
