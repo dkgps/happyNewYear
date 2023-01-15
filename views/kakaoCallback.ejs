@@ -230,23 +230,18 @@
                             dataType: 'json',
                             success: function ( response ) 
                             {
-                                // alert(token)
-                                // const accessToken = {"변수1":"변수값1"}
-                                // alert(response)
-                                console.log("카카오 로그인: ", response);
-                                // localStorage에 accessToken 저장 (로그인 유지);
-                                localStorage.setItem('accessToken', response.token);
+                                // 회원 가입
                                 if(response.signUp === true)
                                 {
-                                    // 가입 화면으로 이동
-                                    window.location.href=`${base_url}/signUp?uid=${response.uid}`;
+                                    window.location.href=`${base_url}/signUp?uid=${response.uid}`; // 가입 화면으로 이동
                                 }
+                                // 로그인
                                 else if(response.signUp === false)
                                 {
-                                    // 쿼리 스트링 암호화
-                                    const encryptedString = window.btoa(`?uid=${response.uid}`);
-                                    // 새해상 화면으로 이동
-                                    location.href = `/message/${encryptedString}`;
+                                    localStorage.setItem('accessToken', response.token);         // localStorage에 저장   
+                                    let queryString = `?uid=${response.uid}&nickname=${response.nickname}`
+                                    let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
+                                    location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동
                                 }
                             },
                             error:function(err){  

@@ -5,7 +5,7 @@ const kakaoLogin = async(req,res,next) => {
 	try
 	{
 		const kakaoLogin = await UserService.kakaoLogin(req.body);
-		res.send({ status: 200, signUp : kakaoLogin.signUp, uid : kakaoLogin.uid, token : kakaoLogin.token });
+		res.send(kakaoLogin);
 	}
 	catch (err)
 	{
@@ -65,8 +65,8 @@ const insertUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
 	try
 	{
-		const result = await UserService.updateUser(req.body);
-		res.send({ status : 200, result : result.toString() });
+		const user = await UserService.updateUser(req.body);
+		res.send(user);
 	}
 	catch (err)
 	{

@@ -15,10 +15,6 @@ app.use(bodyParser.json());
 app.use('/static', express.static(__dirname + '/public'));
 
 
-app.get("/signUp", (req, res) => {
-    res.sendFile(__dirname + "/signUp.html");
-});
-
 app.get("/indexSub", (req, res) => {
     res.sendFile(__dirname + "/indexSub.html");
 });
@@ -37,6 +33,10 @@ app.get("/", (req, res) => {
 
 app.get("/kakaoCallback", (req, res) => {
     res.redirect("/auth/kakaoCallback");
+});
+
+app.get("/signUp", (req, res) => {
+    res.redirect("/auth/signUp");
 });
 
 const authRoute = require('./routes/auth.route');
