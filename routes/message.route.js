@@ -27,6 +27,10 @@ router.get("/:encryptedQueryString", async(req,res) => {
             total       : result.total,
             owner       : result.uid,
             ownerNickname : result.nickname,
+            // 페이징
+            currentPage : result.page,
+            pageSize    : result.perPage,
+            totalPage   : result.totalPage
         });
     }
     catch(err)
