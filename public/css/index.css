@@ -176,7 +176,7 @@ button{font-family: 'Gaegu' !important;}
 .foodChoice .checks input[type="radio"] + label .image img{width: 100%;width: 100%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
 .foodChoice .checks input[type="radio"]:checked + label .image{border: 2px solid #674F3D;}
 .foodChoice .checks input[type="radio"]:checked + label .image img{width: 100%;}
-.mainWrap .submitBtn{margin-top: 15rem;}
+.mainWrap .submitBtn{}
 .mainWrap .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
 .mainWrap .submitBtn .next{width: calc(70% - 5px);}
 .mainWrap .writeStep{}
