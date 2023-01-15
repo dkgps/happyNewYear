@@ -147,9 +147,12 @@ const insertUser = async (userDto, res, next) => {
 const updateUser = async (userDto, res, next) => {
 	try
 	{
-		const updatedUser = await user.update(userDto, {where: { uid: userDto.uid } });
-		let token = jwtGenerator(updatedUser);
-		return { signUp : false, uid : updatedUser.uid, nickname : updatedUser.nickname, token }
+		const updatedUser = await user.update(userDto, 
+		{
+			where: { uid: userDto.uid },
+		});
+		let token = jwtGenerator(userDto);
+		return { signUp : false, uid : userDto.uid, nickname : userDto.nickname, token }
 	}
 	catch (err)
 	{
