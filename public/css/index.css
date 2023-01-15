@@ -71,6 +71,7 @@ button{font-family: 'Gaegu' !important;}
 .btnArea a.inTweeter img{    width: 24px;margin-right: 5px;}
 .btnArea a.inGoogle{background-color: #fff;margin-top: 10px;}
 .btnArea a.inGoogle img{width: 23px;}
+.btnDefault{border: 2px solid #674F3D;color: #674F3D;width: 130px;height: 40px;font-size: 18px;border-radius: 4px;}
 
 /*************** signUp.html ***************/
 .stepGage{max-width: 780px;width: 100%;margin: 0 auto;background-color: #FFDC83;}
@@ -181,7 +182,7 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .submitBtn .next{width: calc(70% - 5px);}
 .mainWrap .writeStep{}
 .wrap.signGage .writeForm{position: absolute;width:calc(100% - 40px); max-width:780px;left: 0;right: 0;margin: auto;}
-.wrap.signGage .writeForm{position: relative;background-color: #fffade71;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
+.wrap.signGage .writeForm{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
 .wrap.signGage .writeForm .choiced{position: absolute;right: 10px;top: -29px;}
 .wrap.signGage .writeForm img{display: none;width: 63px;}
 .wrap.signGage .writeForm img.active{display: block;}
@@ -191,7 +192,7 @@ button{font-family: 'Gaegu' !important;}
 .wrap.signGage .writeForm  p{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
 /* .wrap.signGage .writeForm  #writeContent::placeholder{color: #674f3d6e;} */
 
-.mainWrap .writeForm{position: relative;background-color: #fffade71;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
+.mainWrap .writeForm{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
 .mainWrap .writeStep h3{font-size: 22px;}
 .mainWrap .writeStep #nickName{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #674f3d36;}
 .mainWrap .writeStep #nickName::placeholder{font-family: 'Gaegu';color: #674f3d6e;font-size: 24px;}
@@ -199,6 +200,10 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .writeStep #writeContent::placeholder{color: #674f3d6e;}
 .writeStep .publicWrap{margin-top:20px;}
 .mainWrap .submitBtn.line{margin-top:1rem;padding: 20px 0;border-top: 1px solid #674f3d25;}
+
+/* message */
+.messageClick{}
+/* .messageClick>.writeForm{display: none;} */
 @media(max-width: 450px){
   /* .mainWrap .mainImage{max-width: 450px;width: calc(100% + 30px);margin:0 auto;margin-left: -15px;} */
 }
