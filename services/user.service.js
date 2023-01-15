@@ -37,10 +37,10 @@ const kakaoLogin = async (req, res, next) => {
 			return { signUp : false, uid : kakaoUser.uid, nickname : kakaoUser.nickname, token }
 		}
 		// 없으면 회원 가입
+		else
 		{
-			// const newUser = await user.create({raw: true, nest: true,},userDto);
-			// let token = jwtGenerator(newUser);
-			return { signUp : true }
+			const newUser = await user.create(userDto);
+			return { signUp : true, uid : newUser.uid }
 		}
 		
 	}
