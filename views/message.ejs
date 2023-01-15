@@ -237,19 +237,28 @@
             // 해당 uid 메시지 총개수
             $(".totalNum").html(totalCount);
 
-            $(".messageClick").on("click",function()
+            $(".btnDefault").on("click",function()
                 {
-                    $(this).children(".writeForm").removeClass("none")
+                    // $(this).parents(".writeForm").fadeOut()
+                    // $(this).parents(".writeForm").css({"display":"none"})
+                    // $(".messageClick>.writeForm").fadeOut()
+                    // console.log(287364827)
+                    // $(".messageClick>.writeForm").fadeOut
+                    // $(".writeForm").toggleClass("none")
+                    // if($(this).parent(".writeForm").hasClass("none") === false)
+                    // {
+                    //     $(".writeForm").addClass("none")
+                    // }
                 }
             )
 
-            $(".btnDefault").on("click",function()
+            $(".messageClick").on("click",function()
                 {
-                    // $(".writeForm").addClass("none")
-                    console.log(287364827)
-                    $(this).parents(".writeForm").fadeOut()
+                    $(this).children(".writeForm").toggleClass("none")
                 }
             )
+
+            
             
             if(savedToken)
             {
