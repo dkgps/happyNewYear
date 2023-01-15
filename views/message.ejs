@@ -166,12 +166,12 @@
                 </div>
                 <div class="writeForm">
                     <div class="choiced">
-                        <img src="/static/img/i1.png" alt="">
-                        <img src="/static/img/i2.png" alt="">
+                        <img src="" alt="">
+                        <!-- <img src="/static/img/i2.png" alt="">
                         <img src="/static/img/i3.png" alt="">
                         <img src="/static/img/i4.png" alt="">
                         <img src="/static/img/i5.png" alt="">
-                        <img src="/static/img/i6.png" alt="">
+                        <img src="/static/img/i6.png" alt=""> -->
                     </div>
                     <h3>From.</h3>
                     <input type="text" id="nickName" placeholder="닉네임 (최대8자)" maxlength='8'>
@@ -290,7 +290,8 @@
                         
                         let choicedFood = $(".foodChoice .checks input[type='radio']:checked").val()
                         
-                        $(".mainWrap .writeStep .writeForm .choiced").append('<img class="active" src="/static/img/i'+choicedFood+'.png">')
+                        // $(".mainWrap .writeStep .writeForm .choiced").append('<img class="active" src="/static/img/i'+choicedFood+'.png">')
+                        $(".writeForm .choiced img").attr("src", "/static/img/i"+choicedFood+".png").addClass("active")
                     }
                     
                     
@@ -318,7 +319,7 @@
                     var exposure = $('input:checkbox[id=public]').is(':checked');
 
                     let jsonData2 = {
-                        uid:uidData,
+                        uid:ownerUid,
                         type:foodType,
                         writer,
                         message,
@@ -338,15 +339,14 @@
                                 // {
                                 //     window.location.href='http://localhost:3000/indexSubLink?uid='+uidData
                                 // }
-                                window.location.href=`${base_url}/auth/signUp?uid=${response.uid}`;
+
+                                // window.location.href=`${base_url}/auth/signUp?uid=${response.uid}`;
+                                console.log(response)
                             },
                             error : function(err){
-                                console.log(err)
+                                console.log(err,"에러")
                             }
                     })
-
-                    // $(".writeStep").removeClass("block")
-                    // $(".mainStep").addClass("block")
                 }
             )
             ///////////////////////////indexSubLink////////////////////////////////
