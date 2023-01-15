@@ -34,13 +34,13 @@ const kakaoLogin = async (req, res, next) => {
 		if(kakaoUser)
 		{
 			let token = jwtGenerator(kakaoUser);
-			return { signUp : false, uid : kakaoUser.uid, token }
+			return { signUp : false, uid : kakaoUser.uid, nickname : kakaoUser.nickname, token }
 		}
 		// 없으면 회원 가입
 		{
-			const newUser = await user.create({raw: true, nest: true,},userDto);
-			let token = jwtGenerator(newUser);
-			return { signUp : true, uid : newUser.uid, token }
+			// const newUser = await user.create({raw: true, nest: true,},userDto);
+			// let token = jwtGenerator(newUser);
+			return { signUp : true }
 		}
 		
 	}
@@ -122,8 +122,9 @@ const insertUser = async (userDto, res, next) => {
 const updateUser = async (userDto, res, next) => {
 	try
 	{
-        await user.update(userDto, {where: { uid: userDto.uid } });
-		return 1;
+		const user = await user.update(userDto, {where: { uid: userDto.uid } });
+		let token = jwtGenerator(user);
+		return { signUp : false, uid : user.uid, nickname : user.nickname, token }
 	}
 	catch (err)
 	{

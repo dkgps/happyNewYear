@@ -6,7 +6,7 @@ const getMessageList = async (req, res, next) => {
 	{
 		// param값 복호화
 		const encrypted = req.params.encryptedQueryString;
-		const decrypted = atob(encrypted);
+		const decrypted = decodeURIComponent(atob(encrypted));
 		const uid = decrypted.indexOf("=") != -1 ? decrypted.split("=")[1] : 0;
 
 		if(uid == 0 )
