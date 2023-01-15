@@ -91,7 +91,7 @@
                 <div class="pageNum">
                     <a href=""><<</a><span class="currentNum">1</span>/<span class="allNum">1</span><a href="">>></a>
                 </div>
-                <div class="submitBtn linkCopy invite">
+                <div class="submitBtn linkCopy invite none">
                     <button>내 새해상 링크 복사하기</button>
                 </div>
                 <div class="submitBtn linkCopy beforeInvite none">
@@ -234,16 +234,24 @@
                         if(res.uid == ownerUid)
                         {
                             console.log("본인의 연하장");
+                            $(".invite").removeClass("none");
                         }
                         else
                         {
                             console.log("초대받은 연하장");
                             $(".beforeInvite").removeClass("none");
                             $(".invite").addClass("none");
-                            if(jsonData.accessToken !== "")
-                            {
-                                $(".createNewDesk").addClass("none")
-                            }
+                            $(".createNewDesk").addClass("none");
+                            // if(jsonData.accessToken !== "")
+                            // {
+                            //     $(".createNewDesk").addClass("none")
+                            // }
+                            // else if(jsonData.accessToken === "")
+                            // {
+                            //     $(".invite").addClass("none");
+                            //     $(".createNewDesk").removeClass("none")
+                            // }
+
                         }
                     },
                     error: function(err) {
@@ -256,6 +264,9 @@
             else
             {
                 console.log("초대받은 연하장");
+                $(".invite").addClass("none");
+                $(".beforeInvite").removeClass("none");
+                $(".createNewDesk").removeClass("none");
             }
         })
     </script>
