@@ -52,7 +52,7 @@
         <section class="marginCenter signUpWrap mainWrap">
             <div class="tab mainStep block">
                 <div class="titleWrap">
-                    <h2><span id="ownerNickname">OO</span>님의 새해상</h2>
+                    <h2><span class="ownerNickname">OO</span>님의 새해상</h2>
                     <h3>✉️ 0개의 연하장이 도착했어요!</h3>
                 </div>
                 <div class="mainImage">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="titleWrap">
                     <h2>
-                        <span>OO</span>님에게
+                        <span class="ownerNickname">OO</span>님에게
                         <br>
                         연하장을 남겨주세요
                     </h2>
@@ -213,11 +213,11 @@
             // 닉네임 설정
             if(ownerNickname === "")
             {
-                $("#ownerNickname").html("익명")
+                $(".ownerNickname").html("익명")
             }
             else
             {
-                $("#ownerNickname").html(ownerNickname)
+                $(".ownerNickname").html(ownerNickname)
             }
             
             if(savedToken)
