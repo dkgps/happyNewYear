@@ -230,8 +230,8 @@
                             dataType: 'json',
                             success: function ( response ) 
                             {
-                                // 회원 가입
-                                if(response.signUp === true)
+                                // 회원 가입 || 회원 가입 진행중에 종료한 경우 다시 회원가입 페이지로 
+                                if(response.signUp === true || response.inProgress)
                                 {
                                     window.location.href=`${base_url}/auth/signUp?uid=${response.uid}`; // 가입 화면으로 이동
                                 }
