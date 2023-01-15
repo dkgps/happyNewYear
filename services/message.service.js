@@ -6,10 +6,11 @@ const getMessageList = async (req, res, next) => {
 	{
 		// param값 복호화
 		const encrypted = req.params.encryptedQueryString;
-		const decrypted = atob(encrypted);
-		const uid = decrypted.indexOf("=") != -1 ? decrypted.split("=")[1] : 0;
+		const decrypted = decodeURIComponent(atob(encrypted));
+		const uid = decrypted.split("uid=")[1].split("&")[0];
+		const nickname = decrypted.split("nickname=")[1];
 
-		if(uid == 0 )
+		if(!uid || !nickname)
 		{
 			throw new Error();
 		}
@@ -35,7 +36,7 @@ const getMessageList = async (req, res, next) => {
 		const total = await message.count({
 			where : {uid}
 		});
-		let result = { messageList, total };
+		let result = { messageList, total, uid, nickname };
 		return result;
 	}
 	catch (err)

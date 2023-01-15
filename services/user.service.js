@@ -3,6 +3,22 @@ const axios = require('axios');
 const jwt = require('jsonwebtoken');
 require('dotenv').config(); // env 사용
 
+const existedUser = async (req, res, next) => {
+	let uid = req.uid;
+	const userDto = await user.findOne({
+		where: { 
+			uid,
+			nickname : null,
+			deleteYn : false
+		}
+	});
+
+	if(!userDto)
+	{
+		throw new Error();
+	}
+}
+
 const kakaoLogin = async (req, res, next) => {
 	try
 	{
@@ -26,21 +42,30 @@ const kakaoLogin = async (req, res, next) => {
 			raw: true, nest: true,
 			where: { 
 				social :  userDto.social,
-				socialKey : userDto.socialKey
+				socialKey : userDto.socialKey,
+				deleteYn : false,
 			}
 		});
 		
 		// 회원이 있으면 로그인
 		if(kakaoUser)
 		{
-			let token = jwtGenerator(kakaoUser);
-			return { signUp : false, uid : kakaoUser.uid, token }
+			if(kakaoUser.nickname)
+			{
+				let token = jwtGenerator(kakaoUser);
+				return { signUp : false, uid : kakaoUser.uid, nickname : kakaoUser.nickname, token }
+			}
+			else
+			{
+				// 회원 가입 진행중에 종료한 경우 다시 회원가입 페이지로
+				return { inProgress : true, uid : kakaoUser.uid }
+			}
 		}
 		// 없으면 회원 가입
+		else
 		{
-			const newUser = await user.create({raw: true, nest: true,},userDto);
-			let token = jwtGenerator(newUser);
-			return { signUp : true, uid : newUser.uid, token }
+			const newUser = await user.create(userDto);
+			return { signUp : true, uid : newUser.uid }
 		}
 		
 	}
@@ -122,8 +147,12 @@ const insertUser = async (userDto, res, next) => {
 const updateUser = async (userDto, res, next) => {
 	try
 	{
-        await user.update(userDto, {where: { uid: userDto.uid } });
-		return 1;
+		const updatedUser = await user.update(userDto, 
+		{
+			where: { uid: userDto.uid },
+		});
+		let token = jwtGenerator(userDto);
+		return { signUp : false, uid : userDto.uid, nickname : userDto.nickname, token }
 	}
 	catch (err)
 	{
@@ -165,6 +194,7 @@ const jwtGenerator = (userDto) => {
 }
 
 module.exports = {
+	existedUser,
 	kakaoLogin,
 	verifyToken,
     getAllUsers,

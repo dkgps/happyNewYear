@@ -208,8 +208,13 @@
     </div>
     <script>
         let savedToken = localStorage.getItem("accessToken");
+        let ownerNickname = "<%=ownerNickname%>";
+        let ownerUid = "<%=owner%>";
+
         $(function()
         {
+            // 닉네임 설정
+            
             if(savedToken)
             {
                 let jsonData = {};
@@ -221,8 +226,15 @@
                     data : jsonData,
                     dataType : 'json',
                     success: function(res) {
-                        let nickname = res.nickname;
-                        $('#ownerNickname').html(nickname);
+                        console.log(res);
+                        if(res.uid == ownerUid)
+                        {
+                            console.log("본인의 연하장");
+                        }
+                        else
+                        {
+                            console.log("초대받은 연하장");
+                        }
                     },
                     error: function(err) {
                         // localStorage에서 accessToken을 지우고 메인 화면으로 이동
@@ -230,6 +242,10 @@
                         location.href = '/';
                     }
                 })
+            }
+            else
+            {
+                console.log("초대받은 연하장");
             }
         })
     </script>
