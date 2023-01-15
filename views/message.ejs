@@ -64,8 +64,21 @@
                         { 
                     %>
                         <!-- <h4><%=messageList[i].type%></h4> -->
-                        <div class="">
+                        <div class="messageClick <%-messageList[i].messageId%>">
                             <img class="imgClass<%-messageList[i].type%>" src="/static/img/i<%-messageList[i].type%>.png" alt="">
+                            <!-- <div class="<%-messageList[i].writer%>">
+                                <%-messageList[i].writer%>
+                            </div> -->
+
+                            <div class="writeForm none" style="position: fixed;top: 40px;bottom: 40px;margin: auto;z-index: 999;">
+                                <div class="choiced">
+                                    <img src="/static/img/i<%-messageList[i].type%>.png" style="display: block;top: -11px;" alt="">
+                                </div>
+                                <h3>From.<%-messageList[i].writer%></h3>
+                                <!-- <h2>testUser</h2> -->
+                                <p><%-messageList[i].message%></p>
+                                <button class="btnDefault" style="position:absolute;bottom:20px;left: 0;right: 0;margin: auto;">닫기</button>
+                            </div>
                         </div>
                     <% 
                         } 
@@ -221,7 +234,31 @@
                 $(".ownerNickname").html(ownerNickname)
             }
 
-            $(".totalNum").html(totalCount)
+            // 해당 uid 메시지 총개수
+            $(".totalNum").html(totalCount);
+
+            $(".btnDefault").on("click",function()
+                {
+                    // $(this).parents(".writeForm").fadeOut()
+                    // $(this).parents(".writeForm").css({"display":"none"})
+                    // $(".messageClick>.writeForm").fadeOut()
+                    // console.log(287364827)
+                    // $(".messageClick>.writeForm").fadeOut
+                    // $(".writeForm").toggleClass("none")
+                    // if($(this).parent(".writeForm").hasClass("none") === false)
+                    // {
+                    //     $(".writeForm").addClass("none")
+                    // }
+                }
+            )
+
+            $(".messageClick").on("click",function()
+                {
+                    $(this).children(".writeForm").toggleClass("none")
+                }
+            )
+
+            
             
             if(savedToken)
             {
