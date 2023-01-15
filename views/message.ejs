@@ -91,12 +91,14 @@
                 <div class="pageNum">
                     <a href=""><<</a><span class="currentNum">1</span>/<span class="allNum">1</span><a href="">>></a>
                 </div>
-                <div class="submitBtn linkCopy">
+                <div class="submitBtn linkCopy invite">
                     <button>내 새해상 링크 복사하기</button>
-                    <!-- 링크를 타고 들어온 경우 -->
-                    <!-- <button class="decorate">새해상 꾸며주기</button>
-                    <button class="create">나도 새해상 만들기</button> -->
                 </div>
+                <div class="submitBtn linkCopy beforeInvite none">
+                    <button class="decorate">새해상 꾸며주기</button>
+                    <button class="create">나도 새해상 만들기</button>
+                </div> 
+                
             </div>
             <div class="tab choiceStep" style="display: none;">
                 <div class="stepGage">
@@ -211,6 +213,8 @@
         let ownerNickname = "<%=ownerNickname%>";
         let ownerUid = "<%=owner%>";
 
+        
+
         $(function()
         {
             // 닉네임 설정
@@ -234,6 +238,8 @@
                         else
                         {
                             console.log("초대받은 연하장");
+                            $(".beforeInvite").removeClass("none");
+                            $(".invite").addClass("none");
                         }
                     },
                     error: function(err) {

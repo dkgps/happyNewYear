@@ -47,6 +47,7 @@ body {
   color: #674F3D;
   background-color: #FEE8AF;
 }
+.none{display: none;}
 .wrapCenter{ min-height: 35.5rem;background-size: 55%; height: 100%;display: flex;align-items: center;justify-content: center;}
 section{}
 button{font-family: 'Gaegu' !important;}
