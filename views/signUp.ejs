@@ -105,7 +105,7 @@
                 <button>계정 만들기</button>
             </div>
         </section>
-        <section class="marginCenter signUpWrap signUpWrap2" style="display: block;">
+        <section class="marginCenter signUpWrap signUpWrap2">
             <div class="stepGage active">
                 <div class="inGage"></div>
             </div>
@@ -165,45 +165,6 @@
                         var emailData = $("#email").val();
                         var allAgree = $("#allAgree:checked").val();
                         var publicScope = $(".publicScope .checks input[name='scopeLine']:checked").val();
-                        function email_check(emailData) 
-                        {
-                            var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-                            return reg.test(emailData);
-                        }
-                        var over14 = $("#over14:checked").val();
-                        var agree = $("#agree:checked").val();
-
-                        if( name == "" )
-                        {
-                            alert("이름을 입력해주세요");
-                            return;
-                        }
-
-                        // if(!email_check(email))
-                        // {
-                        //     alert("이메일 형식에 맞게 입력해주세요");
-                        //     return false;
-                        // }
-
-                        // allAgree = $.trim( allAgree );
-                        // if( allAgree == "" )
-                        // {
-                        //     alert("전체 선택에 동의해주세요");
-                        //     return; 
-                        // }    
-                        over14 = $.trim( over14 );
-                        if( over14 == "" )
-                        {
-                            alert("14세 이상 이용약관에 동의해주세요");
-                            return; 
-                        }  
-                        agree = $.trim( agree );
-                        if( agree == "" )
-                        {
-                            alert("개인정보 이용약관에 동의해주세요");
-                            return; 
-                        }  
-
                         var jsonData = {
                             uid:uidData, 
                             nickname:name, 
@@ -258,6 +219,33 @@
 
                 function nextEvent()
                 {
+                    var name = $("#name").val();
+                    var emailData = $("#email").val();
+                    var allAgree = $("#allAgree:checked").val();
+                    function email_check(emailData) 
+                    {
+                        var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+                        return reg.test(emailData);
+                    }
+                    var over14 = $("#over14:checked").val();
+                    var agree = $("#agree:checked").val();
+                    if( name == "" )
+                    {
+                        alert("이름을 입력해주세요");
+                        return;
+                    }
+                    over14 = $.trim( over14 );
+                    if( over14 == "" )
+                    {
+                        alert("14세 이상 이용약관에 동의해주세요");
+                        return; 
+                    }  
+                    agree = $.trim( agree );
+                    if( agree == "" )
+                    {
+                        alert("개인정보 이용약관에 동의해주세요");
+                        return; 
+                    }  
                     $(".signGage").addClass("active")
                 }
 
