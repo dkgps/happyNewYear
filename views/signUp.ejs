@@ -159,6 +159,14 @@
                 // uid,닉네임,이메일,공개범위 정보 전송
                 $("#subjectInformation").on("click",function()
                     {
+                        var scopeCheck = $("input[name='scopeLine']").is(":checked");
+                        // scopeCheck = $.trim( scopeCheck );
+                        if( scopeCheck === false )
+                        {
+                            alert("공개 범위를 선택해주세요");
+                            return; 
+                        }  
+
                         const URLSearch = new URLSearchParams(location.search);
                         var uidData = URLSearch.get("uid")
                         var name = $("#name").val();
@@ -170,6 +178,8 @@
                             email:emailData, 
                             disclosureStatus:publicScope,  
                         }
+
+                        
 
                         // console.log(jsonData)
 
