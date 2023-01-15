@@ -35,10 +35,6 @@ app.get("/kakaoCallback", (req, res) => {
     res.redirect("/auth/kakaoCallback");
 });
 
-app.get("/signUp", (req, res) => {
-    res.redirect("/auth/signUp");
-});
-
 const authRoute = require('./routes/auth.route');
 app.use('/auth', authRoute);
 
