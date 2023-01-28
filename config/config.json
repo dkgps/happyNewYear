@@ -1,17 +1,17 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "timezone": "+09:00"
-  },
-  "production" : {
     "username": "happyNewYear",
     "password": "dkgpsrbf1234!@#$",
     "database": "happyNewYearDB",
     "host": "1.243.221.224",
+    "dialect": "mysql",
+    "timezone": "+09:00"
+  },
+  "production" : {
+    "username": "rookan",
+    "password": "rookan1234!%",
+    "database": "rookandb",
+    "host": "rookan-database.cboku4rqvbad.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
     "timezone": "+09:00"
   }
