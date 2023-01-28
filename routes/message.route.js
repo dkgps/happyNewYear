@@ -27,6 +27,7 @@ router.get("/:encryptedQueryString", async(req,res) => {
             total       : result.total,
             owner       : result.uid,
             ownerNickname : result.nickname,
+            disclosureStatus : result.disclosureStatus,
             // 페이징
             currentPage : result.page,
             pageSize    : result.perPage,
