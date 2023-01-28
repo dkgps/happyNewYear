@@ -77,20 +77,7 @@
                                 </div>
                                 <h3>From.<%-messageList[i].writer%></h3>
                                 <!-- <h2>testUser</h2> -->
-                                <%
-                                    if(!messageList[i].exposure || !disclosure)
-                                    {
-                                %>
-                                        <p class="secretMessage"><%-messageList[i].message%></p>
-                                <%
-                                    }
-                                    else
-                                    {
-                                %>
-                                        <p class="textMessage"><%-messageList[i].message%></p>
-                                <%
-                                    }
-                                %>
+                                <p><%-messageList[i].message%></p>
                                 <button class="btnDefault" style="position:absolute;bottom:20px;left: 0;right: 0;margin: auto;">닫기</button>
                             </div>
                         </div>
@@ -307,7 +294,6 @@
                             $(".beforeInvite").removeClass("none");
                             $(".invite").addClass("none");
                             $(".createNewDesk").addClass("none");
-                            $(".secretMessage").html("🔐");
                         }
                     },
                     error: function(err) {
@@ -323,7 +309,6 @@
                 $(".invite").addClass("none");
                 $(".beforeInvite").removeClass("none");
                 $(".createNewDesk").removeClass("none");
-                $(".secretMessage").html("🔐");
             }
 
 

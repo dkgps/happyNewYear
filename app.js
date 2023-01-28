@@ -2,12 +2,29 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
+const session = require("express-session");
+const dotenv = require("dotenv");
 
 //==================================================================
 //  request body parsing
 //==================================================================
 app.use(bodyParser.urlencoded({extended:true})) // application/x-www-form-urlencoded에서 파싱
 app.use(bodyParser.json());
+
+//==================================================================
+//  Middleware
+//==================================================================
+dotenv.config();
+app.use(session({
+    secret : process.env.SESSION_SECRET,
+    resave : false,
+    saveUninitialized : false,
+    cookie : {
+        maxAge : 3 * 24 * 60 * 60 * 1000,
+        httpOnly : true, // 자바스크립트로 쿠키 조회 안되도록 (true)
+        secure : false, // https환경에서만 주고받기
+    }
+}))
 
 //==================================================================
 //  Serving static files
