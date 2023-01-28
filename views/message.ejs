@@ -375,7 +375,7 @@
                     var foodType = $(".foodChoice .checks input[name='food']:checked").val();
                     var writer = $('.mainWrap .writeStep #nickName').val();
                     var message = $('.mainWrap .writeStep #writeContent').val();
-                    var exposure = $('input:checkbox[id=public]').is(':checked');
+                    var exposure = !($('input:checkbox[id=public]').is(':checked'));
 
 
                     let jsonData2 = {
