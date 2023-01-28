@@ -8,10 +8,9 @@ const getMessageList = async (req, res, next) => {
 		// param값 복호화
 		const encrypted = req.params.encryptedQueryString;
 		const decrypted = decodeURIComponent(atob(encrypted));
-		const uid = decrypted.split("uid=")[1].split("&")[0];
-		const nickname = decrypted.split("nickname=")[1];
+		const uid = decrypted.split("uid=")[1];
 
-		if(!uid || !nickname)
+		if(!uid)
 		{
 			throw new Error();
 		}
@@ -48,7 +47,27 @@ const getMessageList = async (req, res, next) => {
 			where: { uid }
 		});
 
-		let result = { messageList, total, uid, nickname, page, perPage, totalPage, disclosureStatus : specificUser.disclosureStatus };
+		const sessionUid = req.session["uid"] ? req.session.uid : 0;
+
+		console.log("specificUser != sessionUid :",specificUser.uid != sessionUid);
+
+		if(specificUser.uid != sessionUid) // 본인 메시지가 아닌 경우
+		{
+			let disclosureStatus = specificUser.disclosureStatus; // 전체공개 설정
+			for( let i = 0 ; i < messageList.length; i++ )
+			{
+				if( !disclosureStatus || !messageList[i].exposure )
+				{
+					messageList[i].message = "🔐";
+				}
+			}
+		}
+
+		let result = { 
+			messageList, total, 
+			uid, nickname: specificUser.nickname,
+			page, perPage, totalPage 
+		};
 		return result;
 	}
 	catch (err)

@@ -20,7 +20,7 @@ router.get('/kakaoCallback', function(req,res,next) {
 router.get("/signUp", async (req, res) => {
 	try
 	{
-		let uid = req.query.uid;
+		let uid = req.session.uid;
 		await UserService.existedUser({uid});
 		
 		res.render('signUp',{

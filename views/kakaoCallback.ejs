@@ -233,13 +233,13 @@
                                 // 회원 가입 || 회원 가입 진행중에 종료한 경우 다시 회원가입 페이지로 
                                 if(response.signUp === true || response.inProgress)
                                 {
-                                    window.location.href=`${base_url}/auth/signUp?uid=${response.uid}`; // 가입 화면으로 이동
+                                    window.location.href=`${base_url}/auth/signUp`; // 가입 화면으로 이동
                                 }
                                 // 로그인
                                 else if(response.signUp === false)
                                 {
                                     localStorage.setItem('accessToken', response.token);         // localStorage에 저장   
-                                    let queryString = `?uid=${response.uid}&nickname=${response.nickname}`
+                                    let queryString = `?uid=${response.uid}`
                                     let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
                                     location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동
                                 }
