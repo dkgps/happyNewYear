@@ -1,4 +1,5 @@
 const { message } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
+const { user } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
 require('dotenv').config(); // env 사용
 
 const getMessageList = async (req, res, next) => {
@@ -41,7 +42,13 @@ const getMessageList = async (req, res, next) => {
 		if (!total) total = 0;
 		let totalPage = Math.ceil(total /  perPage);
 
-		let result = { messageList, total, uid, nickname, page, perPage, totalPage };
+
+		// user 정보
+		const specificUser = await user.findOne({
+			where: { uid }
+		});
+
+		let result = { messageList, total, uid, nickname, page, perPage, totalPage, disclosureStatus : specificUser.disclosureStatus };
 		return result;
 	}
 	catch (err)
