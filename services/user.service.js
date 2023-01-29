@@ -7,9 +7,7 @@ const existedUser = async (req, res, next) => {
 	let uid = req.uid;
 	const userDto = await user.findOne({
 		where: { 
-			uid,
-			nickname : null,
-			deleteYn : false
+			uid
 		}
 	});
 

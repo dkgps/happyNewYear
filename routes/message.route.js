@@ -22,17 +22,23 @@ router.get("/:encryptedQueryString", async(req,res) => {
     try
     {
         const result =  await MessageController.getMessageList(req);
-        res.render("message",{
-            messageList : result.messageList,
-            total       : result.total,
-            owner       : result.uid,
-            ownerNickname : result.nickname,
-            disclosureStatus : result.disclosureStatus,
-            // 페이징
-            currentPage : result.page,
-            pageSize    : result.perPage,
-            totalPage   : result.totalPage
-        });
+        if(result.inProgress)
+        {
+            res.redirect("/auth/signUp");
+        }
+        else
+        {
+            res.render("message",{
+                messageList : result.messageList,
+                total       : result.total,
+                owner       : result.owner,
+                disclosureStatus : result.disclosureStatus,
+                // 페이징
+                currentPage : result.page,
+                pageSize    : result.perPage,
+                totalPage   : result.totalPage
+            });
+        }
     }
     catch(err)
     {

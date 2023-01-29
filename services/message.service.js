@@ -48,11 +48,16 @@ const getMessageList = async (req, res, next) => {
 		});
 
 		const sessionUid = req.session["uid"] ? req.session.uid : 0;
-
-		console.log("specificUser != sessionUid :",specificUser.uid != sessionUid);
-
+		
+		let owner = false;
 		if(specificUser.uid != sessionUid) // 본인 메시지가 아닌 경우
 		{
+			// 가입 진행중일 때
+			if(!specificUser.nickname)
+			{
+				throw Error();
+			}
+
 			let disclosureStatus = specificUser.disclosureStatus; // 전체공개 설정
 			for( let i = 0 ; i < messageList.length; i++ )
 			{
@@ -62,11 +67,21 @@ const getMessageList = async (req, res, next) => {
 				}
 			}
 		}
+		else	//본인 메시지인 경우
+		{
+			owner = true;
+			// 가입 진행중일 때
+			if(!specificUser.nickname)
+			{
+				return {inProgress : true}
+			}
+		}
 
 		let result = { 
 			messageList, total, 
 			uid, nickname: specificUser.nickname,
-			page, perPage, totalPage 
+			page, perPage, totalPage,
+			owner
 		};
 		return result;
 	}

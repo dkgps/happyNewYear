@@ -189,7 +189,6 @@
                             data : jsonData,
                             dataType : 'json',
                             success : function(res){
-                                localStorage.setItem('accessToken', res.token);         // localStorage에 저장
                                 let queryString = `?uid=${res.uid}`
                                 let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
                                 location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동

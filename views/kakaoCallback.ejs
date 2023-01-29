@@ -238,7 +238,6 @@
                                 // 로그인
                                 else if(response.signUp === false)
                                 {
-                                    localStorage.setItem('accessToken', response.token);         // localStorage에 저장   
                                     let queryString = `?uid=${response.uid}`
                                     let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
                                     location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동
