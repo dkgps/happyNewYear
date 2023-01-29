@@ -29,6 +29,7 @@ const kakaoLogin = async (req, res, next) => {
                 Authorization: `Bearer ${accessToken}`
             }
         })
+		console.log("kakaoInfo: ", kakaoInfo); 
 
 		let userDto = {};
 		userDto.userEmail = kakaoInfo.data.kakao_account.email; // 이메일
