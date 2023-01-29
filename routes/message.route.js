@@ -31,8 +31,7 @@ router.get("/:encryptedQueryString", async(req,res) => {
             res.render("message",{
                 messageList : result.messageList,
                 total       : result.total,
-                owner       : result.uid,
-                ownerNickname : result.nickname,
+                owner       : result.owner,
                 disclosureStatus : result.disclosureStatus,
                 // 페이징
                 currentPage : result.page,
