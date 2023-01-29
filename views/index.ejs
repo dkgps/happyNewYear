@@ -187,33 +187,6 @@
         let base_url = "<%=BASE_URL%>";
         $(function()
             {
-                // 토큰 값 확인 및 검증
-                // localStorage에 accessToken이 있는 경우 자동 로그인 처리 -> 메시지 함으로 이동
-                // localStorage에 accessToken이 없는 경우 로그인 화면
-                let savedToken = localStorage.getItem("accessToken");
-                if(savedToken)
-                {
-                    let jsonData = {};
-                    jsonData.accessToken = savedToken;
-                    
-                    $.ajax({
-                        type: 'post',
-                        url: '/user/verifyToken',
-                        data : jsonData,
-                        dataType : 'json',
-                        success: function(res) {
-                            let queryString = `?uid=${res.uid}&nickname=${res.nickname}`
-                            let encryptedString = window.btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
-                            location.href = `/message/${encryptedString}`;               // 새해상 화면으로 이동
-                        },
-                        error: function(err) {
-                            // localStorage에서 accessToken을 지우고 메인 화면으로 이동
-                            localStorage.removeItem('accessToken');
-                            location.href = '/';
-                        }
-                    })
-                }
-
                 // 전체동의
                 $(".checkForm").on("click", "#allAgree", function () 
                     {

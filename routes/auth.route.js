@@ -3,11 +3,29 @@ var router = express.Router();
 require('dotenv').config();
 const UserService = require('../services/user.service'); // UserService 사용
 
-router.get('/', function(req,res,next) {
-	res.render('index',{
-		BASE_URL			 : process.env.BASE_URL,
-		KAKAO_JAVASCRIPT_KEY : process.env.KAKAO_JAVASCRIPT_KEY,
-	})
+router.get('/', async(req,res,next) => {
+	try
+	{
+		if(req.session["uid"])
+		{
+			const user = await UserService.existedUser({uid : req.session["uid"]});
+			let queryString = `?uid=${req.session["uid"]}`
+			let encryptedString = btoa(encodeURIComponent(queryString)); // 쿼리 스트링 암호화
+			res.redirect(`/message/${encryptedString}`);
+		}
+		else
+		{
+			res.render('index',{
+				BASE_URL			 : process.env.BASE_URL,
+				KAKAO_JAVASCRIPT_KEY : process.env.KAKAO_JAVASCRIPT_KEY,
+			})
+		}
+	}
+	catch (err)
+	{
+		console.log(err);
+		res.status(400).render('error');
+	}
 })
 
 router.get('/kakaoCallback', function(req,res,next) {
@@ -20,7 +38,7 @@ router.get('/kakaoCallback', function(req,res,next) {
 router.get("/signUp", async (req, res) => {
 	try
 	{
-		let uid = req.query.uid;
+		let uid = req.session.uid;
 		await UserService.existedUser({uid});
 		
 		res.render('signUp',{

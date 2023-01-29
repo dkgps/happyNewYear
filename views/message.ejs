@@ -62,6 +62,7 @@
                     <% 
                         for ( var i = 0; i < messageList.length; i++)
                         { 
+                            let disclosure = disclosureStatus;
                     %>
                         <!-- <h4><%=messageList[i].type%></h4> -->
                         <div class="messageClick <%-messageList[i].messageId%>">
@@ -293,7 +294,6 @@
                             $(".beforeInvite").removeClass("none");
                             $(".invite").addClass("none");
                             $(".createNewDesk").addClass("none");
-
                         }
                     },
                     error: function(err) {
@@ -375,7 +375,7 @@
                     var foodType = $(".foodChoice .checks input[name='food']:checked").val();
                     var writer = $('.mainWrap .writeStep #nickName').val();
                     var message = $('.mainWrap .writeStep #writeContent').val();
-                    var exposure = $('input:checkbox[id=public]').is(':checked');
+                    var exposure = !($('input:checkbox[id=public]').is(':checked'));
 
 
                     let jsonData2 = {

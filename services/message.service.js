@@ -1,4 +1,5 @@
 const { message } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
+const { user } = require('../models/index'); // ./models/index.js에서 설정한 연결된 모델들을 가져온다
 require('dotenv').config(); // env 사용
 
 const getMessageList = async (req, res, next) => {
@@ -7,10 +8,9 @@ const getMessageList = async (req, res, next) => {
 		// param값 복호화
 		const encrypted = req.params.encryptedQueryString;
 		const decrypted = decodeURIComponent(atob(encrypted));
-		const uid = decrypted.split("uid=")[1].split("&")[0];
-		const nickname = decrypted.split("nickname=")[1];
+		const uid = decrypted.split("uid=")[1];
 
-		if(!uid || !nickname)
+		if(!uid)
 		{
 			throw new Error();
 		}
@@ -41,7 +41,48 @@ const getMessageList = async (req, res, next) => {
 		if (!total) total = 0;
 		let totalPage = Math.ceil(total /  perPage);
 
-		let result = { messageList, total, uid, nickname, page, perPage, totalPage };
+
+		// user 정보
+		const specificUser = await user.findOne({
+			where: { uid }
+		});
+
+		const sessionUid = req.session["uid"] ? req.session.uid : 0;
+		
+		let owner = false;
+		if(specificUser.uid != sessionUid) // 본인 메시지가 아닌 경우
+		{
+			// 가입 진행중일 때
+			if(!specificUser.nickname)
+			{
+				throw Error();
+			}
+
+			let disclosureStatus = specificUser.disclosureStatus; // 전체공개 설정
+			for( let i = 0 ; i < messageList.length; i++ )
+			{
+				if( !disclosureStatus || !messageList[i].exposure )
+				{
+					messageList[i].message = "🔐";
+				}
+			}
+		}
+		else	//본인 메시지인 경우
+		{
+			owner = true;
+			// 가입 진행중일 때
+			if(!specificUser.nickname)
+			{
+				return {inProgress : true}
+			}
+		}
+
+		let result = { 
+			messageList, total, 
+			uid, nickname: specificUser.nickname,
+			page, perPage, totalPage,
+			owner
+		};
 		return result;
 	}
 	catch (err)

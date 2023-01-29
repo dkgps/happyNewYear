@@ -7,9 +7,7 @@ const existedUser = async (req, res, next) => {
 	let uid = req.uid;
 	const userDto = await user.findOne({
 		where: { 
-			uid,
-			nickname : null,
-			deleteYn : false
+			uid
 		}
 	});
 
@@ -22,7 +20,7 @@ const existedUser = async (req, res, next) => {
 const kakaoLogin = async (req, res, next) => {
 	try
 	{
-		const { accessToken } = req;
+		const { accessToken } = req.body;
 		// 카카오 회원 정보 가져오기
 		let kakaoInfo = await axios({
             method:'get',
@@ -48,25 +46,35 @@ const kakaoLogin = async (req, res, next) => {
 			}
 		});
 		
+
 		// 회원이 있으면 로그인
 		if(kakaoUser)
 		{
-			if(kakaoUser.nickname)
+			// 회원 가입 진행중에 종료한 경우 다시 회원가입 페이지로
+			if(req.session.inProgress==='T' || !kakaoUser.nickname)
 			{
-				let token = jwtGenerator(kakaoUser);
-				return { signUp : false, uid : kakaoUser.uid, nickname : kakaoUser.nickname, token }
+				req.session.uid = kakaoUser.uid;
+				req.session.inProgress = "T";
+				return { inProgress : true }
 			}
 			else
 			{
-				// 회원 가입 진행중에 종료한 경우 다시 회원가입 페이지로
-				return { inProgress : true, uid : kakaoUser.uid }
+				//로그인
+				let token = jwtGenerator(kakaoUser);
+				req.session.uid = kakaoUser.uid;
+				req.session.nickname = kakaoUser.nickname;
+				req.session.inProgress = "F";
+				return { signUp : false, uid : kakaoUser.uid, token }
 			}
 		}
 		// 없으면 회원 가입
 		else
 		{
 			const newUser = await user.create(userDto);
-			return { signUp : true, uid : newUser.uid }
+			req.session.uid = newUser.uid;
+			req.session.inProgress = "T";
+
+			return { signUp : true }
 		}
 		
 	}
@@ -131,20 +139,21 @@ const getUser = async (req, res, next) => {
 }
 
 // 회원 가입
-const insertUser = async (userDto, res, next) => {
-	try
-	{
-        const savedUser = await user.create(userDto);
-		return savedUser;
-	}
-	catch (err)
-	{
-		console.error(err);
-		throw Error(`ERROR WHILE INSERT USER - ${err}`);
-	}
-}
+// const insertUser = async (userDto, res, next) => {
+// 	try
+// 	{
+// 		console.log("userDto : ",userDto);
+//         const savedUser = await user.create(userDto);
+// 		return savedUser;
+// 	}
+// 	catch (err)
+// 	{
+// 		console.error(err);
+// 		throw Error(`ERROR WHILE INSERT USER - ${err}`);
+// 	}
+// }
 
-// 회원 수정
+// 회원 수정(회원가입)
 const updateUser = async (userDto, res, next) => {
 	try
 	{
@@ -153,7 +162,7 @@ const updateUser = async (userDto, res, next) => {
 			where: { uid: userDto.uid },
 		});
 		let token = jwtGenerator(userDto);
-		return { signUp : false, uid : userDto.uid, nickname : userDto.nickname, token }
+		return { signUp : false, uid : userDto.uid, token }
 	}
 	catch (err)
 	{
@@ -200,7 +209,6 @@ module.exports = {
 	verifyToken,
     getAllUsers,
     getUser,
-    insertUser,
 	updateUser,
     deleteUser
 }
