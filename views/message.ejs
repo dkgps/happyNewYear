@@ -208,11 +208,19 @@
     <!-- 모바일 네비게이션 -->
     </div>
     <script>
-        let savedToken = localStorage.getItem("accessToken");
-        let ownerNickname = "<%=ownerNickname%>";
-        let ownerUid = "<%=owner%>";
+        let owner = "<%=owner%>"
+        console.log(typeof(owner))
+        if(owner === "true")
+        {
+            $(".invite").removeClass("none");
+        }
+        else{
+            console.log("초대받은 연하장");
+            $(".invite").addClass("none");
+            $(".beforeInvite").removeClass("none");
+            $(".createNewDesk").removeClass("none");
+        }
         let nowUrl = window.location.href;
-        let totalCount = "<%=total%>";
         function copyUrl(){ 
         //nowUrl 변수에 담긴 주소를
             navigator.clipboard.writeText(nowUrl).then(res=>{
@@ -226,14 +234,14 @@
         {
             
             // 닉네임 설정
-            if(ownerNickname === "")
-            {
-                $(".ownerNickname").html("익명")
-            }
-            else
-            {
-                $(".ownerNickname").html(ownerNickname)
-            }
+            // if(ownerNickname === "")
+            // {
+            //     $(".ownerNickname").html("익명")
+            // }
+            // else
+            // {
+            //     $(".ownerNickname").html(ownerNickname)
+            // }
 
             // 해당 uid 메시지 총개수
             $(".totalNum").html(totalCount);
@@ -271,45 +279,45 @@
 
             
             
-            if(savedToken)
-            {
-                let jsonData = {};
-                jsonData.accessToken = savedToken;
+            // if(savedToken)
+            // {
+            //     let jsonData = {};
+            //     jsonData.accessToken = savedToken;
                 
-                $.ajax({
-                    type: 'post',
-                    url: '/user/verifyToken',
-                    data : jsonData,
-                    dataType : 'json',
-                    success: function(res) {
-                        console.log(res);
-                        if(res.uid == ownerUid)
-                        {
-                            console.log("본인의 연하장");
-                            $(".invite").removeClass("none");
-                        }
-                        else
-                        {
-                            console.log("초대받은 연하장");
-                            $(".beforeInvite").removeClass("none");
-                            $(".invite").addClass("none");
-                            $(".createNewDesk").addClass("none");
-                        }
-                    },
-                    error: function(err) {
-                        // localStorage에서 accessToken을 지우고 메인 화면으로 이동
-                        localStorage.removeItem('accessToken');
-                        location.href = '/';
-                    }
-                })
-            }
-            else
-            {
-                console.log("초대받은 연하장");
-                $(".invite").addClass("none");
-                $(".beforeInvite").removeClass("none");
-                $(".createNewDesk").removeClass("none");
-            }
+            //     $.ajax({
+            //         type: 'post',
+            //         url: '/user/verifyToken',
+            //         data : jsonData,
+            //         dataType : 'json',
+            //         success: function(res) {
+            //             console.log(res);
+            //             if(res.uid == ownerUid)
+            //             {
+            //                 console.log("본인의 연하장");
+            //                 $(".invite").removeClass("none");
+            //             }
+            //             else
+            //             {
+            //                 console.log("초대받은 연하장");
+            //                 $(".beforeInvite").removeClass("none");
+            //                 $(".invite").addClass("none");
+            //                 $(".createNewDesk").addClass("none");
+            //             }
+            //         },
+            //         error: function(err) {
+            //             // localStorage에서 accessToken을 지우고 메인 화면으로 이동
+            //             localStorage.removeItem('accessToken');
+            //             location.href = '/';
+            //         }
+            //     })
+            // }
+            // else
+            // {
+            //     console.log("초대받은 연하장");
+            //     $(".invite").addClass("none");
+            //     $(".beforeInvite").removeClass("none");
+            //     $(".createNewDesk").removeClass("none");
+            // }
 
 
             ///////////////////////////indexSubLink////////////////////////////////
