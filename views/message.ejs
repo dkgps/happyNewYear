@@ -52,8 +52,8 @@
         <section class="marginCenter signUpWrap mainWrap">
             <div class="tab mainStep block">
                 <div class="titleWrap">
-                    <h2><span class="ownerNickname">OO</span>님의 새해상</h2>
-                    <h3>✉️ <span class="totalNum"></span>개의 연하장이 도착했어요!</h3>
+                    <h2><span class="ownerNickname">OO</span>님의 포장마차!</h2>
+                    <h3>✉️ <span class="totalNum"></span>개의 야식이 도착했어요!</h3>
                 </div>
                 <div class="mainImage">
                     <img src="/static/img/mainImage.png" alt="">
@@ -91,11 +91,11 @@
                     <a href=""><<</a><span class="currentNum">1</span>/<span class="allNum">1</span><a href="">>></a>
                 </div>
                 <div class="submitBtn linkCopy invite none">
-                    <button onclick="copyUrl()">내 새해상 링크 복사하기</button>
+                    <button onclick="copyUrl()">내 포장마차 링크 복사하기</button>
                 </div>
                 <div class="submitBtn linkCopy beforeInvite none">
-                    <button class="decorate">새해상 꾸며주기</button>
-                    <button class="create createNewDesk">나도 새해상 만들기</button>
+                    <button class="decorate">포장마차 꾸며주기</button>
+                    <button class="create createNewDesk">나도 포장마차 만들기</button>
                 </div> 
                 
             </div>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="titleWrap">
                     <h2>
-                        새해상 음식을 
+                        맛있는 야식을 
                         <br>골라주세요!
                     </h2>
                 </div>
@@ -175,7 +175,7 @@
                     <h2>
                         <span class="ownerNickname">OO</span>님에게
                         <br>
-                        연하장을 남겨주세요
+                        야식을 남겨주세요
                     </h2>
                 </div>
                 <div class="writeForm">
@@ -189,13 +189,13 @@
                     </div>
                     <h3>From.</h3>
                     <input type="text" id="nickName" placeholder="닉네임 (최대8자)" maxlength='8'>
-                    <textarea name="" id="writeContent" cols="30" rows="10" placeholder="추억에 남는 연하장을 남겨주세요"></textarea>
+                    <textarea name="" id="writeContent" cols="30" rows="10" placeholder="추억에 남는 야식을 남겨주세요"></textarea>
                 </div>
                 <div class="publicWrap">
                     <label for="public" class="chk_box">
                         <input type="checkbox" id="public" />
                         <span class="on"></span>
-                        연하장 주인에게만 보여줄래요(비공개)
+                        포장마차 주인에게만 보여줄래요(비공개)
                     </label>
                 </div>
                 <div class="submitBtn completeArea line">
@@ -215,7 +215,7 @@
             $(".invite").removeClass("none");
         }
         else{
-            console.log("초대받은 연하장");
+            console.log("초대받은 포장마차");
             $(".invite").addClass("none");
             $(".beforeInvite").removeClass("none");
             $(".createNewDesk").removeClass("none");
@@ -244,7 +244,7 @@
             // }
 
             // 해당 uid 메시지 총개수
-            $(".totalNum").html(totalCount);
+            // $(".totalNum").html(totalCount);
 
             $(".btnDefault").on("click",function()
                 {
@@ -321,7 +321,7 @@
 
 
             ///////////////////////////indexSubLink////////////////////////////////
-            // 새해상 꾸며주기 버튼 클릭시
+            // 포장마차 꾸며주기 버튼 클릭시
             $(".decorate").on("click",function()
                 {
                     $(".mainStep").removeClass("block")
@@ -329,7 +329,7 @@
                 }
             )
             
-            // 새해상 음식 선택 클릭
+            // 포장마차 음식 선택 클릭
             $(".choiceStep .prev").on("click",function()
                 {
                     $(".mainStep").addClass("block")
@@ -351,7 +351,7 @@
                     $(".writeStep").addClass("block")
 
                 
-                    //선택한 새해 음식 연하장폼에 출력하기
+                    //선택한 포장마차 음식 폼에 출력하기
                     if($(".foodChoice .checks input[type='radio']").is(":checked"))
                     {
                         
@@ -368,7 +368,7 @@
 
             
             
-            // 연하장 폼
+            // 포장마차 폼
             $(".writeStep .prev").on("click",function()
                 {
                     $(".choiceStep").addClass("block")

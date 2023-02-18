@@ -211,19 +211,16 @@ button{font-family: 'Gaegu' !important;}
 /* .wrap.signGage .writeFormModal  #writeContent::placeholder{color: #86776c
 6e;} */
 
-.mainWrap .writeForm{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #86776c
-6e;margin-top: 40px;}
+.mainWrap .writeForm{position: relative;background-color: #fffde9;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #86776c17;margin-top: 40px;}
 .mainWrap .writeStep h3{font-size: 22px;}
-.mainWrap .writeStep #nickName{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #86776c
-36;}
-.mainWrap .writeStep #nickName::placeholder{font-family: 'Gaegu';color: #86776c
-6e;font-size: 24px;}
-.mainWrap .writeStep #writeContent{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
-.mainWrap .writeStep #writeContent::placeholder{color: #86776c
-6e;}
+.mainWrap .writeStep #nickName{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #ddd;}
+.mainWrap .writeStep #nickName::placeholder{font-family: 'Gaegu';color: #86776c6e;font-size: 24px;}
+.mainWrap .writeStep #writeContent{width: 100%; padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
+.mainWrap .writeStep #writeContent::placeholder{color: #86776c6e;}
 .writeStep .publicWrap{margin-top:20px;}
-.mainWrap .submitBtn.line{margin-top:1rem;padding: 20px 0;border-top: 1px solid #86776c
-25;}
+.mainWrap .submitBtn.line{margin-top:1rem;padding: 20px 0;border-top: 1px solid #86776c25;}
+.mainWrap .writeForm .choiced{width: 150px;position: absolute;top: -56px;right: 0;}
+.mainWrap .writeForm .choiced img{width: 100%;}
 
 /* message */
 .messageClick{}
