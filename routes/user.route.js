@@ -5,6 +5,9 @@ const userController = require("../controllers/user.controller")
 // 카카오 로그인 / 회원가입
 router.post("/kakaoLogin", userController.kakaoLogin);
 
+// 구글 로그인 / 회원가입
+router.post("/googleLogin", userController.googleLogin);
+
 // 토큰 검증
 router.post("/verifyToken", userController.verifyToken);
 
