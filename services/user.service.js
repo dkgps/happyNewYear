@@ -144,6 +144,28 @@ const googleLogin = async (req, res, next) => {
 	
 }
 
+// 로그아웃
+const logout = async (req, res, next) => {
+	try
+	{
+		if (req.session.uid) {
+            req.session.destroy(
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                }
+            );
+		}
+		return true;
+	}
+	catch (err)
+	{
+		console.error(err);
+        throw Error(`ERROR WHILE LOGOUT - ${err}`);
+	}
+}
+
 // 토큰 검증
 const verifyToken = async (req, res, next) => {
 	try
@@ -265,6 +287,7 @@ module.exports = {
 	existedUser,
 	kakaoLogin,
 	googleLogin,
+	logout,
 	verifyToken,
     getAllUsers,
     getUser,
