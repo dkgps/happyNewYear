@@ -37,15 +37,16 @@
   font-weight: 800;
   font-style: black;
 }
-*{color: #674F3D;}
+*{color: #86776c;}
 html,body {}
 body {
   font-size: 14px;
   font-family: 'Gaegu' !important;
   font-weight: 400;
   line-height: 1;
-  color: #674F3D;
-  background-color: #FEE8AF;
+  color: #86776c
+;
+  background-color: #fdfbdc;
 }
 .none{display: none;}
 .wrapCenter{ min-height: 35.5rem;background-size: 55%; height: 100%;display: flex;align-items: center;justify-content: center;}
@@ -53,25 +54,28 @@ section{}
 button{font-family: 'Gaegu' !important;}
 .marginCenter{max-width: 780px;padding:0 15px;margin: 0 auto;}
 .mainBox{position: relative;}
-.mainBox::after{top: -74px;left: 0;right: 0;margin: auto;width: 330px;height: 267px;background-size: cover; display: block;content: '';position: absolute;background-image: url('../img/mainBg.png');}
+/* .mainBox::after{top: -74px;left: 0;right: 0;margin: auto;width: 330px;height: 267px;background-size: cover; display: block;content: '';position: absolute;background-image: url('../img/mainBg.png');} */
 .mainBox h2{font-size: 36px;text-align: center;}
 .mainBox p{font-size: 16px;margin-top: 10px;text-align: center;}
-.mainBox .image{width: 201px;margin: 0 auto; margin-top: 15px;}
+.mainBox .image{width: 330px;margin: 0 auto; margin-top: 15px;}
 .mainBox .image img{width: 100%;}
 .btnArea{max-width: 320px;width: 100%;margin: 0 auto;margin-top: 70px;display: flex;}
 .btnArea .checks{width: 100%;cursor: pointer;}
 .btnArea .checks input[type="radio"] + label{display: flex; width: calc(100% - 20px);height: 55px;font-size: 20px;border-radius: 4px;border: 2px solid #68503ea4;align-items: center;    justify-content: center;min-width: 156px;}
-.btnArea .checks input[type="radio"]:checked + label{color: #fff;background-color: #674F3D;}
+.btnArea .checks input[type="radio"]:checked + label{color: #fff;background-color: #86776c
+;}
 .centerSpace .btnArea{max-width: 320px;width: 100%;margin: 0 auto;margin-top: 70px;display: block;}
 .centerSpace .btnArea a{cursor: pointer; font-size: 20px;width: 100%;height: 55px;border-radius: 5px;display: flex;justify-content: center;align-items: center;}
 .btnArea a.inKakao{}
-.btnArea a.inKakao{background-color: #F9E000;}
+.btnArea a.inKakao{background-color: #ffef60;}
 .btnArea a.inKakao img{width: 28px;}
 .btnArea a.inTweeter{background-color: #3b5998;margin-top: 10px;color: #fff;}
 .btnArea a.inTweeter img{    width: 24px;margin-right: 5px;}
 .btnArea a.inGoogle{background-color: #fff;margin-top: 10px;}
 .btnArea a.inGoogle img{width: 23px;}
-.btnDefault{border: 2px solid #674F3D;color: #674F3D;width: 130px;height: 40px;font-size: 18px;border-radius: 4px;}
+.btnDefault{border: 2px solid #86776c
+;color: #86776c
+;width: 130px;height: 40px;font-size: 18px;border-radius: 4px;}
 
 /*************** signUp.html ***************/
 .stepGage{max-width: 780px;width: 100%;margin: 0 auto;background-color: #FFDC83;}
@@ -83,7 +87,7 @@ button{font-family: 'Gaegu' !important;}
 .signUpWrap.mainWrap .tab{display: none;}
 .signUpWrap.mainWrap .tab.block{display: block;}
 .signUpWrap .title{font-size: 32px;margin-top: 50px;position: relative;}
-.signUpWrap .title::after{top: -31px;left: 178px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/icon2.png');width: 54px;height: 55px;}
+.signUpWrap .title::after{top: -44px;left: 150px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/i2.png');width: 87px;height: 75px;}
 .signUpWrap .title span{font-weight: bold;color: #000;}
 .signUpWrap .inputForm{margin-top: 40px;}
 .signUpWrap .inputForm .inputWrap{margin-top: 40px;}
@@ -91,12 +95,12 @@ button{font-family: 'Gaegu' !important;}
 .signUpWrap .inputForm label{}
 .signUpWrap .inputForm label span{font-size: 20px;}
 .signUpWrap .inputForm label span>span{color:#68503ea4;}
-.signUpWrap .inputForm label input{width: 100%;border:0;height: 55px;background-color: #FFF6DE;border-radius: 4px;font-family: 'Gaegu' !important;padding: 0 10px;box-sizing: border-box;font-size: 14px;}
+.signUpWrap .inputForm label input{width: 100%;border:0;height: 55px;background-color: #ffefc3;;border-radius: 4px;font-family: 'Gaegu' !important;padding: 0 10px;box-sizing: border-box;font-size: 14px;}
 .plusText{font-size: 12px;display: block;margin-top: 9px;}
 .signUpWrap .checkForm{margin-top: 3rem;}
 .chk_box { display: block; position: relative; padding-left: 25px; margin-bottom: 10px; cursor: pointer; font-size: 14px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
-.signUpWrap2 .title::after{top: -16px;left: 141px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/icon3.png');width: 33px;height: 36px;}
+.signUpWrap2 .title::after{top: -43px;left: 116px;position: absolute; display: block;content: '';background-size: contain; background-image: url('../img/i3.png');width: 90px;height: 90px;}
 .signUpWrap2 .image{width: 270px;margin: 0 auto;margin-top: 50px;}
 .signUpWrap2 .image img{width: 270px;height: 270px;object-fit: cover;border-radius: 30px;border: 2px solid #68503e30;}
 .signUpWrap2 .infoBox{margin: 0 auto; margin-top: 30px; text-align: center;padding: 18px 0;background-color: #FFF3D5;border-radius: 4px;max-width: 320px;width: 100%;}
@@ -104,9 +108,12 @@ button{font-family: 'Gaegu' !important;}
 
 .signUpWrap2 .scopeOfDis h2{font-size: 16px;margin: 0 auto;margin-top: 35px; max-width: 320px;width: 100%;}
 .signUpWrap2 .scopeOfDis .btnArea{display: flex;align-items: center;justify-content: space-between;width: 100% !important;max-width: unset !important;margin-top: 24px;}
-.signUpWrap2 .scopeOfDis .btnArea button{width: calc(50% - 5px);border: 2px solid #674F3D;}
+.signUpWrap2 .scopeOfDis .btnArea button{width: calc(50% - 5px);border: 2px solid #86776c
+;}
 .signUpWrap2 .submitBtn{margin-top: 40px;padding-bottom: 20px;}
-.signUpWrap2 .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
+.signUpWrap2 .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #86776c
+;color: #86776c
+;}
 .signUpWrap2 .submitBtn .next{width: calc(70% - 5px);}
 
 .signGage .signUpWrap1{}
@@ -115,18 +122,22 @@ button{font-family: 'Gaegu' !important;}
 .signGage.active .signUpWrap2{display: block;}
 /* 기본 체크박스 숨기기 */
 .chk_box input[type="checkbox"] { display: none; }
-.signUpWrap .allArea{border-bottom: 1px solid #674F3D;}
+.signUpWrap .allArea{border-bottom: 1px solid #86776c
+;}
 
 /* 선택되지 않은 체크박스 스타일 꾸미기 */
-.signUpWrap .on { width: 13px; height: 13px;border-radius: 4px; background: transparent; position: absolute; top: 0; left: 0; border: 1px solid #674F3D;}
+.signUpWrap .on { width: 13px; height: 13px;border-radius: 4px; background: transparent; position: absolute; top: 0; left: 0; border: 1px solid #86776c
+;}
 
 /* 선택된 체크박스 스타일 꾸미기 */
 .chk_box input[type="checkbox"]:checked + .on { background: transparent; }
 .signUpWrap .on:after { content: ""; position: absolute; display: none; }
 .chk_box input[type="checkbox"]:checked + .on:after { display: block; }
-.signUpWrap .on:after { width: 3px; height: 7px; border: solid #674F3D; border-width: 0 2px 2px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); position: absolute; left: 4px; top: 1px; }
+.signUpWrap .on:after { width: 3px; height: 7px; border: solid #86776c
+; border-width: 0 2px 2px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); position: absolute; left: 4px; top: 1px; }
 .submitBtn{margin-top: 3rem;}
-.submitBtn button{width: 100%;height: 55px;font-size: 24px;background-color: #674F3D;color: #fff;border-radius: 4px;}
+.submitBtn button{width: 100%;height: 55px;font-size: 24px;background-color: #86776c
+;color: #fff;border-radius: 4px;}
 
 /*************** indexSub.html ***************/
 .mainWrap{}
@@ -134,20 +145,20 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .titleWrap h2{font-size: 32px;font-weight: normal;}
 .mainWrap .titleWrap h2 span{color: #000;font-weight: bold;}
 .mainWrap .titleWrap h3{margin-top: 5px;font-size: 20px;font-weight: normal;}
-.mainWrap .mainImage{max-width: 330px; margin:0 auto;margin-top: 30px;width: 100%;position: relative;}
+.mainWrap .mainImage{max-width: 500px; margin:0 auto;margin-top: 30px;width: 100%;position: relative;}
 .mainWrap .mainImage .messageContent{position: absolute;bottom: 0;width: 100%;}
 /* .mainWrap .mainImage .messageContent .i1{position: absolute;    bottom: 99px;left: 10px;} */
-.mainWrap .mainImage .messageContent .i1 img{width: 48px;height: 48px;}
+.mainWrap .mainImage .messageContent .i1 img{width: 60px;}
 /* .mainWrap .mainImage .messageContent .i2{position: absolute;    bottom: 113px;left: 57px;} */
-.mainWrap .mainImage .messageContent .i2 img{width: 52px;height: 52px;}
+.mainWrap .mainImage .messageContent .i2 img{width: 60px;}
 /* .mainWrap .mainImage .messageContent .i3{position: absolute;bottom: 63px;left: 43px;} */
-.mainWrap .mainImage .messageContent .i3 img{width: 57px;height: 57px;}
+.mainWrap .mainImage .messageContent .i3 img{width: 60px;}
 /* .mainWrap .mainImage .messageContent .i4{position: absolute;bottom: 42px;right: 167px;} */
-.mainWrap .mainImage .messageContent .i4 img{width: 60px;height: 60px;}
+.mainWrap .mainImage .messageContent .i4 img{width: 60px;}
 /* .mainWrap .mainImage .messageContent .i5{position: absolute;bottom: 48px;right: 109px;} */
-.mainWrap .mainImage .messageContent .i5 img{width: 56px;height: 59px;}
+.mainWrap .mainImage .messageContent .i5 img{width: 60px;}
 /* .mainWrap .mainImage .messageContent .i6{position: absolute;right: 62px;bottom: 70px;} */
-.mainWrap .mainImage .messageContent .i6 img{width: 47px;height: 47px;}
+.mainWrap .mainImage .messageContent .i6 img{width: 60px;}
 
 
 .mainWrap .mainImage .messageContent>div:nth-of-type(1){position: absolute;    bottom: 99px;left: 10px;}
@@ -169,37 +180,47 @@ button{font-family: 'Gaegu' !important;}
 .mainWrap .pageNum{font-size: 22px;text-align: center;margin-top: 10px;}
 .mainWrap .pageNum a{font-size: 22px;}
 .mainWrap .linkCopy{padding-bottom: 20px;}
-.linkCopy .create{background-color: transparent;color: #674F3D;}
+.linkCopy .create{background-color: transparent;color: #86776c
+;}
 
 /* mainWrap */
 .foodChoice{display: flex;gap: 13px;flex-wrap: wrap;width:100%;max-width: 308px;margin: 0 auto;margin-top: 45px;}
 .foodChoice .checks input[type="radio"] + label .image{box-sizing: border-box;width: 90px;height: 90px;background-color: #fffcf5c1;border-radius: 4px;position: relative;}
 .foodChoice .checks input[type="radio"] + label .image img{width: 100%;width: 100%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
-.foodChoice .checks input[type="radio"]:checked + label .image{border: 2px solid #674F3D;}
+.foodChoice .checks input[type="radio"]:checked + label .image{border: 2px solid #86776c
+;}
 .foodChoice .checks input[type="radio"]:checked + label .image img{width: 100%;}
 .mainWrap .submitBtn{}
-.mainWrap .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #674F3D;color: #674F3D;}
+.mainWrap .submitBtn .prev{width: calc(30% - 5px);background-color: transparent;border: 2px solid #86776c
+;color: #86776c
+;}
 .mainWrap .submitBtn .next{width: calc(70% - 5px);}
 .mainWrap .writeStep{}
 .wrap.signGage .writeFormModal{position: absolute;width:calc(100% - 40px); max-width:780px;left: 0;right: 0;margin: auto;}
-.wrap.signGage .writeFormModal{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
+.wrap.signGage .writeFormModal{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #86776c
+6e;margin-top: 40px;}
 .wrap.signGage .writeFormModal .choiced{position: absolute;right: 10px;top: -29px;}
 .wrap.signGage .writeFormModal img{display: none;width: 63px;}
 .wrap.signGage .writeFormModal img.active{display: block;}
 .wrap.signGage .writeFormModal  h3{font-size: 22px;}
-.wrap.signGage .writeFormModal  h2{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #674f3d36;}
-/* .wrap.signGage .writeFormModal  #nickName::placeholder{font-family: 'Gaegu';color: #674f3d6e;font-size: 24px;} */
+.wrap.signGage .writeFormModal  h2{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #86776c
+36;}
+/* .wrap.signGage .writeFormModal  #nickName::placeholder{font-family: 'Gaegu';color: #86776c
+6e;font-size: 24px;} */
 .wrap.signGage .writeFormModal  p{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
-/* .wrap.signGage .writeFormModal  #writeContent::placeholder{color: #674f3d6e;} */
+/* .wrap.signGage .writeFormModal  #writeContent::placeholder{color: #86776c
+6e;} */
 
-.mainWrap .writeForm{position: relative;background-color: #fffade;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #674f3d6e;margin-top: 40px;}
+.mainWrap .writeForm{position: relative;background-color: #fffde9;padding: 25px;box-sizing: border-box;border-radius: 30px;border: 2px solid #86776c17;margin-top: 40px;}
 .mainWrap .writeStep h3{font-size: 22px;}
-.mainWrap .writeStep #nickName{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #674f3d36;}
-.mainWrap .writeStep #nickName::placeholder{font-family: 'Gaegu';color: #674f3d6e;font-size: 24px;}
-.mainWrap .writeStep #writeContent{padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
-.mainWrap .writeStep #writeContent::placeholder{color: #674f3d6e;}
+.mainWrap .writeStep #nickName{font-size: 24px; font-family: 'Gaegu';width: 100%;display: block;background-color: transparent;padding: 10px 5px;box-sizing: border-box;border: 0; border-bottom: 1px solid #ddd;}
+.mainWrap .writeStep #nickName::placeholder{font-family: 'Gaegu';color: #86776c6e;font-size: 24px;}
+.mainWrap .writeStep #writeContent{width: 100%; padding: 10px 5px;box-sizing: border-box; height: 380px; resize: none; outline: 0; font-family: 'Gaegu';background-color: transparent;border:0;font-size: 18px;}
+.mainWrap .writeStep #writeContent::placeholder{color: #86776c6e;}
 .writeStep .publicWrap{margin-top:20px;}
-.mainWrap .submitBtn.line{margin-top:1rem;padding: 20px 0;border-top: 1px solid #674f3d25;}
+.mainWrap .submitBtn.line{margin-top:1rem;padding: 20px 0;border-top: 1px solid #86776c25;}
+.mainWrap .writeForm .choiced{width: 150px;position: absolute;top: -56px;right: 0;}
+.mainWrap .writeForm .choiced img{width: 100%;}
 
 /* message */
 .messageClick{}

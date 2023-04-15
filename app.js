@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const app = express();
 const session = require("express-session");
 const dotenv = require("dotenv");
+const aes256 = require("aes256");
 
 //==================================================================
 //  request body parsing
@@ -50,6 +51,42 @@ app.get("/", (req, res) => {
 
 app.get("/kakaoCallback", (req, res) => {
     res.redirect("/auth/kakaoCallback");
+});
+
+app.get("/decrypt", (req, res) => {
+	try
+	{
+		let encryptedText = process.env.encryptedText;
+		res.render('decrypt',{
+			encryptedText : encryptedText,
+		});
+	}
+	catch(err)
+	{
+		res.status(400).render('error');
+	}
+});
+
+app.post("/decrypt", (req, res) => {
+	try
+	{
+		const encryptedText = process.env.encryptedText;
+        const key = req.body.key;
+
+        if(key === process.env.key)
+        {
+            const decryptedText = aes256.decrypt(key, encryptedText);
+            res.send(decryptedText);
+        }
+        else
+        {
+            res.send('유효하지 않은 key 입니다.');
+        }
+	}
+	catch(err)
+	{
+		console.log(err);
+	}
 });
 
 const authRoute = require('./routes/auth.route');

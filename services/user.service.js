@@ -29,7 +29,6 @@ const kakaoLogin = async (req, res, next) => {
                 Authorization: `Bearer ${accessToken}`
             }
         })
-		console.log("kakaoInfo: ", kakaoInfo); 
 
 		let userDto = {};
 		userDto.userEmail = kakaoInfo.data.kakao_account.email; // 이메일
@@ -84,6 +83,87 @@ const kakaoLogin = async (req, res, next) => {
         throw Error(`ERROR WHILE KAKAO LOGIN - ${err}`);
 	}
 	
+}
+
+const googleLogin = async (req, res, next) => {
+	try
+	{
+		let googleInfo = req.body;
+
+		let userDto = {};
+		userDto.userEmail = googleInfo.email; // 이메일
+		userDto.socialKey = googleInfo.id;    // 소셜키
+		userDto.social	  = 'google'		// 소셜 : 구글
+
+		// 회원 존재 여부 확인
+		const googleUser = await user.findOne({
+			raw: true, nest: true,
+			where: { 
+				social :  userDto.social,
+				socialKey : userDto.socialKey,
+				deleteYn : false,
+			}
+		});
+
+		// 회원이 있으면 로그인
+		if(googleUser)
+		{
+			// 회원 가입 진행중에 종료한 경우 다시 회원가입 페이지로
+			if(req.session.inProgress==='T' || !googleUser.nickname)
+			{
+				req.session.uid = googleUser.uid;
+				req.session.inProgress = "T";
+				return { inProgress : true }
+			}
+			else
+			{
+				//로그인
+				let token = jwtGenerator(googleUser);
+				req.session.uid = googleUser.uid;
+				req.session.nickname = googleUser.nickname;
+				req.session.inProgress = "F";
+				return { signUp : false, uid : googleUser.uid, token }
+			}
+		}
+		// 없으면 회원 가입
+		else
+		{
+			const newUser = await user.create(userDto);
+			req.session.uid = newUser.uid;
+			req.session.inProgress = "T";
+
+			return { signUp : true }
+		}
+		
+	}
+	catch (err)
+	{
+		console.error(err);
+        throw Error(`ERROR WHILE GOOGLE LOGIN - ${err}`);
+	}
+	
+}
+
+// 로그아웃
+const logout = async (req, res, next) => {
+	try
+	{
+		if (req.session.uid) {
+            req.session.destroy(
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                }
+            );
+		}
+		return true;
+	}
+	catch (err)
+	{
+		console.error(err);
+        throw Error(`ERROR WHILE LOGOUT - ${err}`);
+	}
 }
 
 // 토큰 검증
@@ -206,6 +286,8 @@ const jwtGenerator = (userDto) => {
 module.exports = {
 	existedUser,
 	kakaoLogin,
+	googleLogin,
+	logout,
 	verifyToken,
     getAllUsers,
     getUser,

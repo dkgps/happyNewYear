@@ -13,6 +13,30 @@ const kakaoLogin = async(req,res,next) => {
 	}
 }
 
+const googleLogin = async(req,res,next) => {
+	try
+	{
+		const googleLogin = await UserService.googleLogin(req);
+		res.send(googleLogin);
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
+const logout = async(req,res,next) => {
+	try
+	{
+		const logoutResult = await UserService.logout(req);
+		res.send(logoutResult);
+	}
+	catch (err)
+	{
+		res.status(400).json({ status : 400, message : err.message});
+	}
+}
+
 const verifyToken = async(req,res,next) => {
 	try
 	{
@@ -97,6 +121,8 @@ const deleteUser = async (req, res, next) => {
 
 module.exports = {
 	kakaoLogin,
+	googleLogin,
+	logout,
 	verifyToken,
 	getAllUsers,
 	getUser,
